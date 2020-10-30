@@ -3,10 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0158A3CF254BF5E100B8C5FC /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0158A3CE254BF5E100B8C5FC /* Login.swift */; };
+		0158A40A254C035D00B8C5FC /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0158A409254C035D00B8C5FC /* SignUp.swift */; };
+		0158A412254C041D00B8C5FC /* currentSessionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0158A411254C041D00B8C5FC /* currentSessionInfo.swift */; };
+		0158A417254C068B00B8C5FC /* listenToSessionUpdates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0158A416254C068B00B8C5FC /* listenToSessionUpdates.swift */; };
+		0158A41C254C0B9E00B8C5FC /* SignOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0158A41B254C0B9E00B8C5FC /* SignOut.swift */; };
+		0158A421254C0C2100B8C5FC /* PasswordManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0158A420254C0C2100B8C5FC /* PasswordManagement.swift */; };
 		46C0E109254932220020BEDD /* ToggleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0E108254932220020BEDD /* ToggleApp.swift */; };
 		46C0E10B254932220020BEDD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0E10A254932220020BEDD /* ContentView.swift */; };
 		46C0E10D254932230020BEDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46C0E10C254932230020BEDD /* Assets.xcassets */; };
@@ -36,6 +42,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0158A3CE254BF5E100B8C5FC /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		0158A409254C035D00B8C5FC /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		0158A411254C041D00B8C5FC /* currentSessionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = currentSessionInfo.swift; sourceTree = "<group>"; };
+		0158A416254C068B00B8C5FC /* listenToSessionUpdates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listenToSessionUpdates.swift; sourceTree = "<group>"; };
+		0158A41B254C0B9E00B8C5FC /* SignOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOut.swift; sourceTree = "<group>"; };
+		0158A420254C0C2100B8C5FC /* PasswordManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagement.swift; sourceTree = "<group>"; };
 		46C0E105254932220020BEDD /* Toggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46C0E108254932220020BEDD /* ToggleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleApp.swift; sourceTree = "<group>"; };
 		46C0E10A254932220020BEDD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,13 +93,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0158A3CD254BF5B100B8C5FC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				46C0E10A254932220020BEDD /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0158A406254C02DA00B8C5FC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0158A407254C02EC00B8C5FC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0158A408254C034600B8C5FC /* Authentication */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0158A408254C034600B8C5FC /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				0158A3CE254BF5E100B8C5FC /* Login.swift */,
+				0158A409254C035D00B8C5FC /* SignUp.swift */,
+				0158A41B254C0B9E00B8C5FC /* SignOut.swift */,
+				0158A411254C041D00B8C5FC /* currentSessionInfo.swift */,
+				0158A416254C068B00B8C5FC /* listenToSessionUpdates.swift */,
+				0158A420254C0C2100B8C5FC /* PasswordManagement.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		0BEA6BDAF0BF3CCFB93BCFF7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				EBC89CA85A289F7C6B6B9E75 /* Pods-Toggle.debug.xcconfig */,
 				F0965E39D03C9D589CB195D7 /* Pods-Toggle.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -119,7 +166,9 @@
 				6249E918254A456E00DF3787 /* amplifyconfiguration.json */,
 				6249E917254A456E00DF3787 /* awsconfiguration.json */,
 				46C0E108254932220020BEDD /* ToggleApp.swift */,
-				46C0E10A254932220020BEDD /* ContentView.swift */,
+				0158A406254C02DA00B8C5FC /* Model */,
+				0158A3CD254BF5B100B8C5FC /* View */,
+				0158A407254C02EC00B8C5FC /* Controller */,
 				46C0E10C254932230020BEDD /* Assets.xcassets */,
 				46C0E111254932230020BEDD /* Info.plist */,
 				46C0E10E254932230020BEDD /* Preview Content */,
@@ -337,7 +386,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				46C0E10B254932220020BEDD /* ContentView.swift in Sources */,
+				0158A412254C041D00B8C5FC /* currentSessionInfo.swift in Sources */,
+				0158A40A254C035D00B8C5FC /* SignUp.swift in Sources */,
+				0158A421254C0C2100B8C5FC /* PasswordManagement.swift in Sources */,
 				46C0E109254932220020BEDD /* ToggleApp.swift in Sources */,
+				0158A3CF254BF5E100B8C5FC /* Login.swift in Sources */,
+				0158A417254C068B00B8C5FC /* listenToSessionUpdates.swift in Sources */,
+				0158A41C254C0B9E00B8C5FC /* SignOut.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
