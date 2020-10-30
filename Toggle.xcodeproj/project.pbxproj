@@ -13,6 +13,9 @@
 		46C0E110254932230020BEDD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46C0E10F254932230020BEDD /* Preview Assets.xcassets */; };
 		46C0E11B254932230020BEDD /* ToggleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0E11A254932230020BEDD /* ToggleTests.swift */; };
 		46C0E126254932230020BEDD /* ToggleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0E125254932230020BEDD /* ToggleUITests.swift */; };
+		6249E919254A456E00DF3787 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 6249E917254A456E00DF3787 /* awsconfiguration.json */; };
+		6249E91A254A456E00DF3787 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 6249E918254A456E00DF3787 /* amplifyconfiguration.json */; };
+		8FCB73AB10557EB1D921266B /* Pods_Toggle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C126DC19DFDA03D78323360 /* Pods_Toggle.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,11 @@
 		46C0E121254932230020BEDD /* ToggleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToggleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46C0E125254932230020BEDD /* ToggleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleUITests.swift; sourceTree = "<group>"; };
 		46C0E127254932230020BEDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6249E917254A456E00DF3787 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = SOURCE_ROOT; };
+		6249E918254A456E00DF3787 /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = SOURCE_ROOT; };
+		8C126DC19DFDA03D78323360 /* Pods_Toggle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Toggle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBC89CA85A289F7C6B6B9E75 /* Pods-Toggle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toggle.debug.xcconfig"; path = "Target Support Files/Pods-Toggle/Pods-Toggle.debug.xcconfig"; sourceTree = "<group>"; };
+		F0965E39D03C9D589CB195D7 /* Pods-Toggle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toggle.release.xcconfig"; path = "Target Support Files/Pods-Toggle/Pods-Toggle.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FCB73AB10557EB1D921266B /* Pods_Toggle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +81,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0BEA6BDAF0BF3CCFB93BCFF7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EBC89CA85A289F7C6B6B9E75 /* Pods-Toggle.debug.xcconfig */,
+				F0965E39D03C9D589CB195D7 /* Pods-Toggle.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		46C0E0FC254932220020BEDD = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +98,8 @@
 				46C0E119254932230020BEDD /* ToggleTests */,
 				46C0E124254932230020BEDD /* ToggleUITests */,
 				46C0E106254932220020BEDD /* Products */,
+				0BEA6BDAF0BF3CCFB93BCFF7 /* Pods */,
+				4C64F376F0F6D4D217D64D6E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,6 +116,8 @@
 		46C0E107254932220020BEDD /* Toggle */ = {
 			isa = PBXGroup;
 			children = (
+				6249E918254A456E00DF3787 /* amplifyconfiguration.json */,
+				6249E917254A456E00DF3787 /* awsconfiguration.json */,
 				46C0E108254932220020BEDD /* ToggleApp.swift */,
 				46C0E10A254932220020BEDD /* ContentView.swift */,
 				46C0E10C254932230020BEDD /* Assets.xcassets */,
@@ -130,6 +153,14 @@
 			path = ToggleUITests;
 			sourceTree = "<group>";
 		};
+		4C64F376F0F6D4D217D64D6E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8C126DC19DFDA03D78323360 /* Pods_Toggle.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,9 +168,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 46C0E12A254932230020BEDD /* Build configuration list for PBXNativeTarget "Toggle" */;
 			buildPhases = (
+				B3AC92E9AE60E9B47EA8389A /* [CP] Check Pods Manifest.lock */,
 				46C0E101254932220020BEDD /* Sources */,
 				46C0E102254932220020BEDD /* Frameworks */,
 				46C0E103254932220020BEDD /* Resources */,
+				ADCB71E70184C7C566BBF79C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -235,6 +268,8 @@
 			files = (
 				46C0E110254932230020BEDD /* Preview Assets.xcassets in Resources */,
 				46C0E10D254932230020BEDD /* Assets.xcassets in Resources */,
+				6249E919254A456E00DF3787 /* awsconfiguration.json in Resources */,
+				6249E91A254A456E00DF3787 /* amplifyconfiguration.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +288,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		ADCB71E70184C7C566BBF79C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Toggle/Pods-Toggle-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Toggle/Pods-Toggle-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Toggle/Pods-Toggle-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3AC92E9AE60E9B47EA8389A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Toggle-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		46C0E101254932220020BEDD /* Sources */ = {
@@ -414,6 +491,7 @@
 		};
 		46C0E12B254932230020BEDD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBC89CA85A289F7C6B6B9E75 /* Pods-Toggle.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -435,6 +513,7 @@
 		};
 		46C0E12C254932230020BEDD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0965E39D03C9D589CB195D7 /* Pods-Toggle.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
