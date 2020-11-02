@@ -12,20 +12,20 @@ import AmplifyPlugins
 @main
 struct ToggleApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @ObservedObject var sessionManager = SessionManager()
+    
+    init() {
+        configureAmplify()
+        sessionManager.getCurrentAuthUser()
+    }
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView().environmentObject(sessionManager)
         }
     }
-}
-
-class AppDelegate: NSObject, UIApplicationDelegate {
     
-    //MARK: - Executes when App Finished Launching
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        
+    private func configureAmplify() {
         do {
             try Amplify.add(plugin: AWSCognitoAuthPlugin())
             try Amplify.configure()
@@ -33,11 +33,15 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         } catch {
             print("Failed to initialize Amplify with \(error)")
         }
-        
-        let currentSession = currentSessionInfo()
-        
-        // check if a used is signed in
-        currentSession.fetchCurrentAuthSession()
+    }
+}
+
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    
+    //MARK: - Executes when App Finished Launching
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
         print("Finished Launching")
         return true

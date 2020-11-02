@@ -8,30 +8,33 @@
 import SwiftUI
 
 let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0)
-struct ContentView: View {
+struct LoginView: View {
     
-    @State var username: String = ""
-    @State var password: String = ""
-    @State var showErrorAlert: Bool = false
-    @State var alertError: String = ""
+    @EnvironmentObject var sessionManager: SessionManager
+    
+    @State private var username: String = ""
+    @State private var password: String = ""
+    //@State private var presentError: Bool = false
     
     var body: some View{
         Background {
             VStack(spacing: 10) {
                 UserNameTextField(username: $username)
                 PasswordTextField(password: $password)
-                
                 HStack(spacing: 20) {
                     Button(action: {
                         self.endEditing()
-                        authenticateLoginRequest()
+                        sessionManager.signIn(username: username, password: password)
                     }) {
                         LoginButtonContent()
                     }
-                    Button(action: {print("button tapped")}) {
+                    
+                    Button(action: {
+                        self.endEditing()
+                        sessionManager.showSignUp()
+                    }){
                         SignUpButtonContent()
                     }
-
                 }
                 .offset(y: 30)
             }
@@ -40,32 +43,18 @@ struct ContentView: View {
         .onTapGesture {
             self.endEditing()
         }
-        .alert(isPresented: $showErrorAlert) { () -> Alert in
-            Alert(title: Text("Error"),
-                              message: Text(alertError),
-                              dismissButton: .default(Text("Ok")))
-        }
     }
+    
     
     private func endEditing() {
         UIApplication.shared.endEditing()
-    }
-    
-    private func authenticateLoginRequest() {
-        let authentication = Login()
-        authentication.signIn(username: username, password: password) { (error) in
-            if let error = error {
-                self.alertError = error
-                self.showErrorAlert = true
-            }
-        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
-            .previewDevice("iPhone 11")
+        LoginView()
+            .environmentObject(SessionManager())
     }
 }
 
@@ -93,7 +82,7 @@ struct SignUpButtonContent: View {
     }
 }
 
-struct UserNameTextField: View {
+private struct UserNameTextField: View {
     
     @Binding var username: String
     var body: some View {
@@ -105,7 +94,7 @@ struct UserNameTextField: View {
     }
 }
 
-struct PasswordTextField: View {
+private struct PasswordTextField: View {
     
     @Binding var password: String
     var body: some View {
@@ -117,17 +106,17 @@ struct PasswordTextField: View {
     }
 }
 
-struct Background<Content: View>: View {
+private struct Background<Content: View>: View {
     private var content: Content
-
+    
     init(@ViewBuilder content: @escaping () -> Content) {
         self.content = content()
     }
-
+    
     var body: some View {
         Color.white
-        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        .overlay(content)
+            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            .overlay(content)
     }
 }
 
