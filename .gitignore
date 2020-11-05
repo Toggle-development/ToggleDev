@@ -1,4 +1,10 @@
+#pods
+Pods/
 
+#random
+.DS_Store
+.gitignore~
+..gitignore.un~
 
 #amplify
 amplify/\#current-cloud-backend
@@ -15,11 +21,3 @@ amplifyconfiguration.json
 amplify-build-config.json
 amplify-gradle-config.json
 amplifytools.xcconfig
-
-#pods
-Pods/
-
-#random
-.DS_Store
-.gitignore~
-..gitignore.un~

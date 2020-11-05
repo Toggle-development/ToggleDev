@@ -7,32 +7,41 @@
 
 import SwiftUI
 import Amplify
-
+import UIKit
 struct SessionView: View {
     @EnvironmentObject var sessionManager: SessionManager
     @State private var presentError: Bool = false
     @State private var errorMessage: String = ""
-    
+    @State var view = 0
     let user: AuthUser
     
     var body: some View {
-        Button(action: {
-            sessionManager.signOutLocally()
-        }) {
-            Text("Sign Out")
-        }
-        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("signout-locally-error")), perform: { (errorMsg) in
-            if let userInfo = errorMsg.userInfo, let errMsg = userInfo["errorMessage"] {
-                self.presentError.toggle()
-                if let errString = errMsg as? String {
-                    self.errorMessage = errString
-                }
-           }
-        }).alert(isPresented: $presentError) {
-            Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
-        }
+        VStack{
         
-    }
+            TopNav().ignoresSafeArea().padding(.vertical, -1)
+        
+                Button(action: {
+                    sessionManager.signOutLocally()
+                }) {
+                    Text("Sign Out")
+                }
+                .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("signout-locally-error")), perform: { (errorMsg) in
+                    if let userInfo = errorMsg.userInfo, let errMsg = userInfo["errorMessage"] {
+                        self.presentError.toggle()
+                        if let errString = errMsg as? String {
+                            self.errorMessage = errString
+                        }
+                    }
+                }).alert(isPresented: $presentError) {
+                    Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+                }
+        Spacer()
+            BottomNav(view: self.$view)
+        }
+        .edgesIgnoringSafeArea(.bottom)
+        .background(Color.black.opacity(0.8))
+}
+    
 }
 
 struct SessionView_Previews: PreviewProvider {
@@ -44,3 +53,4 @@ struct SessionView_Previews: PreviewProvider {
         SessionView(user: DummyUser()).environmentObject(SessionManager())
     }
 }
+
