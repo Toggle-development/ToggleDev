@@ -1,6 +1,7 @@
 
 
 #amplify
+amplify/
 amplify/\#current-cloud-backend
 amplify/.config/local-*
 amplify/mock-data
@@ -23,3 +24,4 @@ Pods/
 .DS_Store
 .gitignore~
 ..gitignore.un~
+.un~*
