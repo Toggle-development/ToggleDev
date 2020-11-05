@@ -9,6 +9,10 @@ PODS:
     - AWSCore (~> 2.18.0)
     - AWSMobileClient (~> 2.18.0)
     - AWSPluginsCore (= 1.4.0)
+  - AmplifyPlugins/AWSS3StoragePlugin (1.4.0):
+    - AWSCore (~> 2.18.0)
+    - AWSPluginsCore (= 1.4.0)
+    - AWSS3 (~> 2.18.0)
   - AWSAuthCore (2.18.0):
     - AWSCore (= 2.18.0)
   - AWSCognitoIdentityProvider (2.18.0):
@@ -25,10 +29,13 @@ PODS:
     - Amplify (= 1.4.0)
     - AWSCore (~> 2.18.0)
     - AWSMobileClient (~> 2.18.0)
+  - AWSS3 (2.18.0):
+    - AWSCore (= 2.18.0)
 
 DEPENDENCIES:
   - Amplify
   - AmplifyPlugins/AWSCognitoAuthPlugin
+  - AmplifyPlugins/AWSS3StoragePlugin
 
 SPEC REPOS:
   trunk:
@@ -40,6 +47,7 @@ SPEC REPOS:
     - AWSCore
     - AWSMobileClient
     - AWSPluginsCore
+    - AWSS3
 
 SPEC CHECKSUMS:
   Amplify: 7974e4da6a0fcae8b79afd4fc38e78d1b54a6ea7
@@ -50,7 +58,8 @@ SPEC CHECKSUMS:
   AWSCore: e8cc7fd06efa211328942cc7c9f6dddbe889a115
   AWSMobileClient: b082181b527b2f68222006fa996a2ec4d7be6386
   AWSPluginsCore: 883d3969add07eec02d4719c1a844d0b870b2e1d
+  AWSS3: 31b24341477f8eaae01542900e2253e908eed1ee
 
-PODFILE CHECKSUM: a1aca8175d63026b8008e5934bccd904f033e62d
+PODFILE CHECKSUM: da061bca077f57d0092ee60d68b353cf6fff2cd3
 
 COCOAPODS: 1.8.4

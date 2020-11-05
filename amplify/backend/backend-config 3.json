@@ -1,12 +1,5 @@
 {
-  "auth": {
-    "togglec5a73703": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
-      "customAuth": false
-    }
-  },
+  "auth": {},
   "storage": {
     "toggle": {
       "service": "S3",

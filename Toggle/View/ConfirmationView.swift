@@ -9,63 +9,83 @@ import SwiftUI
 
 struct ConfirmationView: View {
     @EnvironmentObject private var sessionManager: SessionManager
+    @State private var presentError: Bool = false
+    @State private var errorMessage: String = ""
     
     let username: String
     let password: String
+    
     var body: some View {
-        VStack(spacing: 5) {
-            Text("Hello \(username)")
-                .fontWeight(.medium)
-                .font(.title)
-                .foregroundColor(Color.black)
-            
-            Text("Please Confirm Your Account")
-                .fontWeight(.medium)
-                .font(.headline)
-                .foregroundColor(Color.black)
-            
-            Text("An email was sent to you")
-                .fontWeight(.medium)
-                .font(.headline)
-                .foregroundColor(Color.black)
-            
-            Spacer()
-            Spacer()
-            VStack{
-            Button(action: {
-                sessionManager.resendSignUpConfirmationCode(username: username)
-            }) {
-                Text("Resend verification code")
-                    .foregroundColor(.blue)
-                    .fontWeight(.heavy)
+        ZStack {
+            VStack(alignment: .center, spacing: 5) {
+                Text("Enter Verification Code").font(.title).fontWeight(.medium)
+                Spacer()
+                Text("Hello \(username), Please Confirm Your Account. An email was sent to you.")
+                    .fontWeight(.light)
                     .font(.headline)
-            }
-            Text("Enter Verification Code").font(.title)
-            }.padding()
-            
-            Verification(username: username, password: password).environmentObject(sessionManager)
-            
-        }.padding(.top, 30)
-    }
-}
-
-struct Verification: View {
-    @State var code: [String] = []
-    @EnvironmentObject private var sessionManager: SessionManager
-    
-    let username: String
-    let password: String
-    var body: some View {
-        VStack {
-            HStack(spacing: 25) {
-                ForEach(code, id: \.self) {i in
-                    Text(i).font(.title).fontWeight(.semibold)
+                    .foregroundColor(Color.black)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                
+                Spacer()
+                VStack{
+                Button(action: {
+                    sessionManager.resendSignUpConfirmationCode(username: username)
+                }) {
+                    Text("Resend verification code")
+                        .foregroundColor(.blue)
+                        .fontWeight(.heavy)
+                        .font(.headline)
                 }
-            }.animation(.spring())
-            Spacer()
-            NumberPad(codes: $code, username: username, password: password).environmentObject(sessionManager)
-        }.padding(.vertical)
+                }.padding()
+                .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("resend-code-signup-error")), perform: { (errorMsg) in
+                    if let userInfo = errorMsg.userInfo, let errMsg = userInfo["errorMessage"] {
+                        self.presentError.toggle()
+                        if let errString = errMsg as? String {
+                            self.errorMessage = errString
+                        }
+                   }
+                }).alert(isPresented: $presentError) {
+                    Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+                }
+                .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("confirm-code-error")), perform: { (errorMsg) in
+                    if let userInfo = errorMsg.userInfo, let errMsg = userInfo["errorMessage"] {
+                        self.presentError.toggle()
+                        if let errString = errMsg as? String {
+                            self.errorMessage = errString
+                        }
+                   }
+                }).alert(isPresented: $presentError) {
+                    Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+                }
+                
+                Verification(username: username, password: password).environmentObject(sessionManager)
+                
+            }.padding(.top, 30)
+        }
     }
+
+    struct Verification: View {
+        @State var code: [String] = []
+        @EnvironmentObject private var sessionManager: SessionManager
+        
+        let username: String
+        let password: String
+        var body: some View {
+            VStack {
+                HStack(spacing: 25) {
+                    ForEach(code, id: \.self) {i in
+                        Text(i).font(.title).fontWeight(.semibold)
+                    }
+                }.animation(.spring())
+                .foregroundColor(.black)
+                .font(.title2)
+                
+                Spacer()
+                NumberPad(codes: $code, username: username, password: password).environmentObject(sessionManager)
+            }.padding(.vertical)
+        }
+        }
 }
 struct ConfirmationView_Previews: PreviewProvider {
     static var previews: some View {
@@ -82,9 +102,9 @@ struct NumberPad: View {
     let password: String
     
     var body: some View {
-        VStack(alignment:.leading, spacing:20) {
+        VStack(alignment:.leading, spacing: 0) {
             ForEach(datas){i in
-                HStack() {
+                HStack(spacing: 0) {
                     ForEach(i.row){j in
                         Button(action: {
                             self.isButtonSelected.toggle()
@@ -109,14 +129,15 @@ struct NumberPad: View {
                         }){
                             if(j.value == "delete.left.fill") {
                                 Image(systemName: j.value).font(.body).padding(.vertical)
-                                    .frame(width:self.getSpacing())
+                                    .frame(width: self.getSpacing() , height: self.getSpacing() / 2 )
                             }
                             else {
-                                Text(j.value).font(.title).fontWeight(.semibold).padding(.vertical)
+                                Text(j.value).font(.title).fontWeight(.regular).padding(.vertical)
                                     .frame(width: self.getSpacing())
                             }
-                        }.background(isButtonSelected ? Color.blue.opacity(0.5) : Color.white)
+                        }
                         .buttonStyle(MyButtonStyle())
+                        .frame(width: self.getSpacing())
                     }
                 }
             }

@@ -50,23 +50,34 @@ final class SessionManager: ObservableObject {
      @param: email (string)
      */
     func signUp(username: String, password: String, email: String) {
-        let userAttributes = [AuthUserAttribute(.email, value: email)]
-        let options = AuthSignUpRequest.Options(userAttributes: userAttributes)
-        Amplify.Auth.signUp(username: username, password: password, options: options) {[weak self] result in
-            switch result {
-            case .success(let signUpResult):
-                if case let .confirmUser(deliveryDetails, _) = signUpResult.nextStep {
-                    print("Delivery details \(String(describing: deliveryDetails))")
-                    DispatchQueue.main.async {
-                        withAnimation {
-                            self?.authState = .confirmCode(username: username, password: password)
+        if email == "" {
+            print("No Email Provided")
+            sendErrorToView("signup-error", "Please Enter Your Email")
+        } else if password.count < 8 {
+            print("Invalid password, must be at least 8 characters")
+            sendErrorToView("signup-error", "password must be at least 8 characters")
+        }
+        else {
+            let username = String(username.filter { !" \n\t\r".contains($0)}) // filter out white spaces
+            let userAttributes = [AuthUserAttribute(.email, value: email)]
+            let options = AuthSignUpRequest.Options(userAttributes: userAttributes)
+            Amplify.Auth.signUp(username: username, password: password, options: options) {[weak self] result in
+                switch result {
+                case .success(let signUpResult):
+                    if case let .confirmUser(deliveryDetails, _) = signUpResult.nextStep {
+                        print("Delivery details \(String(describing: deliveryDetails))")
+                        DispatchQueue.main.async {
+                            withAnimation {
+                                self?.authState = .confirmCode(username: username, password: password)
+                            }
                         }
+                    } else {
+                        self?.signIn(username: username, password: password)
                     }
-                } else {
-                    self?.signIn(username: username, password: password)
+                case .failure(let error):
+                    print("An error occurred while registering a user \(error)")
+                    sendErrorToView("signup-error", error.errorDescription)
                 }
-            case .failure(let error):
-                print("An error occurred while registering a user \(error)")
             }
         }
     }
@@ -76,6 +87,7 @@ final class SessionManager: ObservableObject {
      @param: confirmationCode (string)
      */
     func confirmSignUp(for username: String, with confirmationCode: String, password: String) {
+        let username = String(username.filter { !" \n\t\r".contains($0)}) // filter out white spaces
         Amplify.Auth.confirmSignUp(for: username, confirmationCode: confirmationCode) {[weak self] result in
             switch result {
             case .success(let result):
@@ -87,6 +99,7 @@ final class SessionManager: ObservableObject {
                 print("Confirm signUp succeeded")
             case .failure(let error):
                 print("An error occurred while confirming sign up \(error)")
+                sendErrorToView("confirm-code-error", error.errorDescription)
             }
         }
     }
@@ -100,8 +113,9 @@ final class SessionManager: ObservableObject {
             switch result {
             case .success(let result):
                 print("Delivery details \(result.destination)")
-            case .failure(_):
+            case .failure(let error):
                 print("Error re-sending sign up confirmation code")
+                sendErrorToView("resend-code-signup-error", error.errorDescription)
             }
         }
     }
@@ -113,6 +127,7 @@ final class SessionManager: ObservableObject {
      @param: password (String)
      */
     func signIn(username: String, password: String) {
+        let username = String(username.filter { !" \n\t\r".contains($0)}) // filter out white spaces
         Amplify.Auth.signIn(username: username, password: password) {[weak self] result in
             switch result {
             case .success(let result):
@@ -150,6 +165,7 @@ final class SessionManager: ObservableObject {
                 }
             case .failure(let error):
                 print("Sign in failed \(error)")
+                sendErrorToView("login-error", error.errorDescription)
             }
         }
     }
@@ -169,6 +185,7 @@ final class SessionManager: ObservableObject {
                 }
             case .failure(let error):
                 print("Sign out failed with error \(error)")
+                sendErrorToView("signout-locally-error", error.errorDescription)
             }
         }
     }
@@ -183,7 +200,15 @@ final class SessionManager: ObservableObject {
                 print("Successfully signed out")
             case .failure(let error):
                 print("Sign out failed with error \(error)")
+                sendErrorToView("signout-globally-error", error.errorDescription)
             }
         }
+    }
+}
+
+func sendErrorToView(_ errorType: String, _ errorContent: String) {
+    DispatchQueue.main.async {
+        NotificationCenter.default.post(name: NSNotification.Name(errorType),
+                                        object: nil, userInfo: ["errorMessage" : errorContent])
     }
 }

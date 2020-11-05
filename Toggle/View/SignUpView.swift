@@ -13,10 +13,12 @@ struct SignUpView: View {
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var email: String = ""
+    @State private var presentError: Bool = false
+    @State private var errorMessage: String = ""
     
     var body: some View {
         Background {
-            VStack(spacing: 20){
+            VStack(spacing: 10){
                 Spacer()
                 Spacer()
                 UserNameTextField(username: $username)
@@ -30,15 +32,27 @@ struct SignUpView: View {
                     DoneButtonContent()
                 }
                 .offset(y:20)
+                .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("signup-error")), perform: { (errorMsg) in
+                    if let userInfo = errorMsg.userInfo, let errMsg = userInfo["errorMessage"] {
+                        self.presentError.toggle()
+                        if let errString = errMsg as? String {
+                            self.errorMessage = errString
+                        }
+                   }
+                }).alert(isPresented: $presentError) {
+                    Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+                }
                 
                 Spacer()
                 Button(action: {
                     sessionManager.showLogin()
                 }, label: {
                     Text("Already have an account? Log in.")
+                        .foregroundColor(.white)
+                        .fontWeight(.heavy)
+                        .padding()
                 })
-            }.offset(y:-20)
-            .padding()
+            }.padding()
         }.onTapGesture {
             UIApplication.shared.endEditing()
         }
@@ -108,7 +122,7 @@ private struct Background<Content: View>: View {
     }
     
     var body: some View {
-        Color.white
+        Color.blue.opacity(0.5).ignoresSafeArea()
             .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
             .overlay(content)
     }

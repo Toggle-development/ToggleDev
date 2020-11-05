@@ -1,6 +1,5 @@
 //
-//  RootView.swift
-//  Toggle
+//  RootView.swift//  Toggle
 //
 //  Created by Walid Rafei on 11/1/20.
 //

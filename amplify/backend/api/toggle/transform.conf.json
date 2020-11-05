@@ -1,10 +1,17 @@
 {
     "Version": 5,
     "ElasticsearchWarning": true,
-    "ResolverConfig": {
-        "project": {
-            "ConflictHandler": "AUTOMERGE",
-            "ConflictDetection": "VERSION"
-        }
+    "StackMapping": {
+        "PostTable": "Post",
+        "PostIAMRole": "Post",
+        "PostDataSource": "Post",
+        "GetPostResolver": "Post",
+        "ListPostResolver": "Post",
+        "CreatePostResolver": "Post",
+        "UpdatePostResolver": "Post",
+        "DeletePostResolver": "Post",
+        "GetAttPostTableStreamArn": "Post",
+        "GetAttPostDataSourceName": "Post",
+        "GetAttPostTableName": "Post"
     }
 }

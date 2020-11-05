@@ -14,19 +14,30 @@ struct LoginView: View {
     
     @State private var username: String = ""
     @State private var password: String = ""
-    //@State private var presentError: Bool = false
+    @State private var presentError: Bool = false
+    @State private var errorMessage: String = ""
     
     var body: some View{
         Background {
             VStack(spacing: 10) {
                 UserNameTextField(username: $username)
                 PasswordTextField(password: $password)
+                
                 HStack(spacing: 20) {
                     Button(action: {
                         self.endEditing()
                         sessionManager.signIn(username: username, password: password)
                     }) {
                         LoginButtonContent()
+                    }.onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("login-error")), perform: { (errorMsg) in
+                        if let userInfo = errorMsg.userInfo, let errMsg = userInfo["errorMessage"] {
+                            self.presentError.toggle()
+                            if let errString = errMsg as? String {
+                                self.errorMessage = errString
+                            }
+                        }
+                    }).alert(isPresented: $presentError) {
+                        Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
                     }
                     
                     Button(action: {
@@ -114,7 +125,7 @@ private struct Background<Content: View>: View {
     }
     
     var body: some View {
-        Color.white
+        Color.blue.opacity(0.5).ignoresSafeArea()
             .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
             .overlay(content)
     }
@@ -125,3 +136,4 @@ extension UIApplication {
         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
+

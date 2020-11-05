@@ -10,6 +10,8 @@ import Amplify
 
 struct SessionView: View {
     @EnvironmentObject var sessionManager: SessionManager
+    @State private var presentError: Bool = false
+    @State private var errorMessage: String = ""
     
     let user: AuthUser
     
@@ -19,6 +21,17 @@ struct SessionView: View {
         }) {
             Text("Sign Out")
         }
+        .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("signout-locally-error")), perform: { (errorMsg) in
+            if let userInfo = errorMsg.userInfo, let errMsg = userInfo["errorMessage"] {
+                self.presentError.toggle()
+                if let errString = errMsg as? String {
+                    self.errorMessage = errString
+                }
+           }
+        }).alert(isPresented: $presentError) {
+            Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+        }
+        
     }
 }
 
