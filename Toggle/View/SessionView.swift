@@ -8,6 +8,8 @@
 import SwiftUI
 import Amplify
 import UIKit
+import AVKit
+
 struct SessionView: View {
     @EnvironmentObject var sessionManager: SessionManager
     @State private var presentError: Bool = false
@@ -19,8 +21,7 @@ struct SessionView: View {
         VStack{
         
             TopNav().ignoresSafeArea().padding(.vertical, -1)
-        
-                Button(action: {
+                /*Button(action: {
                     sessionManager.signOutLocally()
                 }) {
                     Text("Sign Out")
@@ -34,12 +35,23 @@ struct SessionView: View {
                     }
                 }).alert(isPresented: $presentError) {
                     Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+                }*/
+            
+            ScrollView {
+                VStack(spacing: 20) {
+                    ForEach(0..<10) {
+                        Text("Item \($0)")
+                            .foregroundColor(.white)
+                            .font(.largeTitle)
+                            .frame(width: 200, height: 200)
+                            .background(Color.red)
+                    }
                 }
-        Spacer()
+            }
+            
             BottomNav(view: self.$view)
         }
         .edgesIgnoringSafeArea(.bottom)
-        .background(Color.black.opacity(0.8))
 }
     
 }

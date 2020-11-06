@@ -52,7 +52,7 @@ struct LoginView: View {
             .padding()
         }
         .onTapGesture {
-            self.endEditing()
+        self.endEditing()
         }
     }
     
