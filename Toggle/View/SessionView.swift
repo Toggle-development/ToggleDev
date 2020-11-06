@@ -18,42 +18,13 @@ struct SessionView: View {
     let user: AuthUser
     
     var body: some View {
-        VStack{
-        
-            TopNav().ignoresSafeArea().padding(.vertical, -1)
-                /*Button(action: {
-                    sessionManager.signOutLocally()
-                }) {
-                    Text("Sign Out")
-                }
-                .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("signout-locally-error")), perform: { (errorMsg) in
-                    if let userInfo = errorMsg.userInfo, let errMsg = userInfo["errorMessage"] {
-                        self.presentError.toggle()
-                        if let errString = errMsg as? String {
-                            self.errorMessage = errString
-                        }
-                    }
-                }).alert(isPresented: $presentError) {
-                    Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
-                }*/
-            
-            ScrollView {
-                VStack(spacing: 20) {
-                    ForEach(0..<10) {
-                        Text("Item \($0)")
-                            .foregroundColor(.white)
-                            .font(.largeTitle)
-                            .frame(width: 200, height: 200)
-                            .background(Color.red)
-                    }
-                }
-            }
-            
+        VStack(spacing: 0){
+            TopNav().padding(.bottom, 10)
+            MainFeed()
             BottomNav(view: self.$view)
         }
         .edgesIgnoringSafeArea(.bottom)
-}
-    
+    }
 }
 
 struct SessionView_Previews: PreviewProvider {
@@ -66,3 +37,19 @@ struct SessionView_Previews: PreviewProvider {
     }
 }
 
+//MARK: - Sign out might need later
+/*Button(action: {
+ sessionManager.signOutLocally()
+ }) {
+ Text("Sign Out")
+ }
+ .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("signout-locally-error")), perform: { (errorMsg) in
+ if let userInfo = errorMsg.userInfo, let errMsg = userInfo["errorMessage"] {
+ self.presentError.toggle()
+ if let errString = errMsg as? String {
+ self.errorMessage = errString
+ }
+ }
+ }).alert(isPresented: $presentError) {
+ Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+ }*/

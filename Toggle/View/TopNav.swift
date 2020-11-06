@@ -8,36 +8,25 @@
 import SwiftUI
 import UIKit
 struct TopNav: View {
-    @State var index = 0
-    @State var view = 0
+    @State var index = 1
+    @State var view = 1
     var body: some View {
         VStack(spacing: 0) {
             HStack{
                 Group{
-                    Button(action: {
-                        self.index = 0
-                        self.view = 0
-                    }){
-                        HStack{
-                            
-                            Image("logo1").frame(width: 120.0, height: 30.0).imageScale(.small)
-                        }
-                        .padding(.vertical,4)
-                        .padding(.horizontal)
                         
-                    }
+                    Image("logo1").frame(width: 120.0, height: 30.0).imageScale(.small)
+                        .padding(.horizontal)
+                    
                     Spacer()
                     Button(action: {
-                            self.index = 0
-                            self.view = 0
+                        // add action for + button
                     }){
-                        HStack{
                             
-                            Image(systemName: "plus.circle.fill").foregroundColor(.white).imageScale(.large)
-                            
-                        }
-                        .padding(.vertical,4)
-                        .padding(.horizontal)
+                        Image(systemName:"plus.circle.fill")
+                            .foregroundColor(.white).imageScale(.large)
+                            .padding(.vertical,4)
+                            .padding(.horizontal)
                         
                     }
                     .foregroundColor(.white)
@@ -58,9 +47,9 @@ struct TopNav: View {
                     Text("Following")
                         .frame(width: UIScreen.main.bounds.width / 2 ,height:UIScreen.main.bounds.width / 10,  alignment: .center)
                         .font(.headline)
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color.black)
                 }
-                .background(Color.blue.opacity(self.index == 1 ? 0.65 : 0))
+                .background(Color.blue.opacity(self.index == 1 ? 0.3 : 0))
                 .cornerRadius(22)
                 
                 Button( action: {
@@ -70,16 +59,13 @@ struct TopNav: View {
                     Text("Discover")
                         .frame(width: UIScreen.main.bounds.width / 2 ,height:UIScreen.main.bounds.width / 10,  alignment: .center)
                         .font(.headline)
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color.black)
                 }
-                .background(Color.blue.opacity(self.index == 2 ? 0.65 : 0))
+                .background(Color.blue.opacity(self.index == 2 ? 0.3 : 0))
                 .cornerRadius(22)
             }
             .animation(.default)
         }
-        .padding(.top,UIApplication.shared.windows.first?.safeAreaInsets.top)
-        .background(Color.gray.opacity(4))
-        .cornerRadius(22)
     }
 }
 

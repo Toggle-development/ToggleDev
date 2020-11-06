@@ -83,7 +83,6 @@ struct BottomNav: View {
         .padding(.horizontal,20)
         .padding(.bottom,UIApplication.shared.windows.first?.safeAreaInsets.bottom)
         .background(Color.gray.opacity(4))
-        .cornerRadius(22)
         .animation(.default)
     }
     
