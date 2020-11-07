@@ -92,15 +92,36 @@ struct VideoView: UIViewRepresentable {
 }
 
 struct UserInteractions: View {
+    @State var liked = false
     var body: some View {
-        HStack {
-            Image(systemName: "suit.heart").imageScale(.large)
-                .padding(.horizontal)
+        HStack{
+            Spacer(minLength: UIScreen.main.bounds.width/1.2)
             Image(systemName: "message").imageScale(.large)
-            Spacer()
+            
+            
+            ZStack {
+                    Image(systemName: "heart.fill")
+                            .opacity(liked ? 1 : 0)
+                            .scaleEffect(liked ? 1.0 : 0.1)
+                        .animation(.linear).imageScale(.large)
+                Image(systemName: "heart").imageScale(.large)
+            }
+            .onTapGesture {
+                            self.liked.toggle()
+                    }
+        
+            .foregroundColor(liked ? .red : .black)
+            
+            
+            
+            Spacer(minLength: 3)
         }
-    }
+     }
 }
+
+
+    
+
 
 struct CaptionsAndComments: View {
     let caption: String
