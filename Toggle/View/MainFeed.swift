@@ -19,6 +19,7 @@ struct Post: Identifiable, Hashable {
 
 struct MainFeed: View {
     //test data
+    @State var currOffset: CGFloat = 0.0
     
     let posts: [Post] =
         [.init(id: 0, postOwner: "Walid Rafei", caption: "This is awesome", numberOfLikes: 10, videoURL:"https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8"),
@@ -27,6 +28,7 @@ struct MainFeed: View {
         ]
     
     var body: some View {
+        
         GeometryReader { geometry in
             List {
                 ForEach(posts, id: \.id) {post in
@@ -34,8 +36,18 @@ struct MainFeed: View {
                         TopBarOfCell(postOwner: post.postOwner)
                             .frame(width: UIScreen.main.bounds.width, height: geometry.size.height / 15)
                             .padding(.top, 5)
+
                         VideoView(videoURL: URL(string: post.videoURL)!, previewLength: 60)
                             .frame(width: UIScreen.main.bounds.width, height: geometry.size.height / 1.5)
+                            .transformAnchorPreference(key: MyKey.self, value: .bounds) {
+                                $0.append(MyFrame(id: String(post.id), frame: geometry[$1]))
+                            }
+                            .onPreferenceChange(MyKey.self) {
+                                if(currOffset < 0 && currOffset > (-geometry.size.height / 1.5)/1.5) {
+                                    print($0)
+                                }
+                                // Handle content frame changes here
+                            }
                         
                         UserInteractions()
                             .frame(width: UIScreen.main.bounds.width, height: geometry.size.width / 10)
@@ -58,6 +70,7 @@ struct MainFeed_Previews: PreviewProvider {
 
 struct TopBarOfCell: View {
     let postOwner: String
+    @State var topBarOffset: CGFloat = 0.0
     var body: some View {
         HStack {
             GeometryReader { geo in
@@ -134,5 +147,33 @@ struct CaptionsAndComments: View {
         }
         .padding(.leading, 5)
         .padding(.bottom, 20)
+    }
+}
+
+struct MyFrame : Equatable {
+    let id : String
+    let frame : CGRect
+
+    static func == (lhs: MyFrame, rhs: MyFrame) -> Bool {
+        lhs.id == rhs.id && lhs.frame == rhs.frame
+    }
+}
+
+struct MyKey : PreferenceKey {
+    typealias Value = [MyFrame] // The list of view frame changes in a View tree.
+
+    static var defaultValue: [MyFrame] = []
+
+    /// When traversing the view tree, Swift UI will use this function to collect all view frame changes.
+    static func reduce(value: inout [MyFrame], nextValue: () -> [MyFrame]) {
+        value.append(contentsOf: nextValue())
+    }
+}
+
+enum TestEnum : String, CaseIterable, Identifiable {
+    case one, two, three, four, five, six, seven, eight, nine, ten
+
+    var id: String {
+        rawValue
     }
 }
