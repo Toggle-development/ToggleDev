@@ -15,6 +15,7 @@ struct SessionView: View {
     @State private var presentError: Bool = false
     @State private var errorMessage: String = ""
     @State var view = 0
+    
     let user: AuthUser
     
     var body: some View {

@@ -11,14 +11,16 @@ import AVKit
 class PlayerView: UIView {
     private let playerLayer = AVPlayerLayer()
     private var previewTimer:Timer?
-    var previewLength:Double
+    private var previewLength:Double
+    private var player: AVPlayer
     
-    init(frame: CGRect, url: URL, previewLength:Double) {
+    init(player: AVPlayer, frame: CGRect, previewLength:Double) {
         self.previewLength = previewLength // can be used to limit how long the video is
+        self.player = player
         super.init(frame: frame)
         
         // Create the video player using the URL passed in.
-        let player = AVPlayer(url: url)
+        //let player = AVPlayer(url: url)
         player.volume = 0 // Will play audio if you don't set to zero
         player.play() // Set to play once created
         
@@ -31,14 +33,10 @@ class PlayerView: UIView {
             player.seek(to: CMTime(seconds: 0, preferredTimescale: CMTimeScale(1)))
         })
         
-
         layer.addSublayer(playerLayer)
     }
     
-    required init?(coder: NSCoder) {
-        self.previewLength = 15
-        super.init(coder: coder)
-    }
+    required init?(coder: NSCoder) { fatalError("not implemented") }
 
     override func layoutSubviews() {
         super.layoutSubviews()
