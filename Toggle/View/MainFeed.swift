@@ -75,7 +75,7 @@ struct TopBarOfCell: View {
         HStack {
             GeometryReader { geo in
                 HStack {
-                    Image(systemName:"plus.circle.fill")
+                    Image(systemName:"person.circle.fill")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: UIScreen.main.bounds.width / 6, height: geo.size
@@ -109,15 +109,15 @@ struct UserInteractions: View {
     var body: some View {
         HStack{
             Spacer(minLength: UIScreen.main.bounds.width/1.2)
-            Image(systemName: "message").imageScale(.large)
-            
+            Image(systemName: "message").scaleEffect(1.7)
+            Spacer(minLength: 3)
             
             ZStack {
                     Image(systemName: "heart.fill")
                             .opacity(liked ? 1 : 0)
                             .scaleEffect(liked ? 1.0 : 0.1)
-                        .animation(.linear).imageScale(.large)
-                Image(systemName: "heart").imageScale(.large)
+                        .animation(.linear).scaleEffect(1.7)
+                Image(systemName: "heart").scaleEffect(1.7)
             }
             .onTapGesture {
                             self.liked.toggle()

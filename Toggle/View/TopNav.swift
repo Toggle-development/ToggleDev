@@ -37,7 +37,7 @@ struct TopNav: View {
             }
             .padding(.horizontal,20)
             .animation(.default)
-            .padding(.vertical, 2)
+            .padding(.vertical, 5)
             
             HStack(spacing: 0) {
                 Button( action: {
@@ -66,11 +66,6 @@ struct TopNav: View {
             }
             .animation(.default)
         }
-        
-        .padding(.top,UIApplication.shared.windows.first?.safeAreaInsets.top)
-        .background(Color.gray.opacity(4))
-        
-        
     }
 }
 

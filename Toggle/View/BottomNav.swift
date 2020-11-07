@@ -19,10 +19,10 @@ struct BottomNav: View {
                         self.view = 0                }){
                     HStack{
                         
-                        Image(systemName: "plus.circle.fill").foregroundColor(.white).imageScale(.large)
+                        Image(systemName: "plus.circle.fill").foregroundColor(.white).scaleEffect(1.5)
                         
                     }
-                    .padding(.vertical,4)
+                    .padding(.vertical,5)
                     .padding(.horizontal)
                     
                 }
@@ -34,10 +34,10 @@ struct BottomNav: View {
                 Button(action: {self.index = 1
                         self.view = 1                }){
                     HStack{
-                        Image(systemName: "gamecontroller.fill").foregroundColor(.white).imageScale(.large)
+                        Image(systemName: "gamecontroller.fill").foregroundColor(.white).scaleEffect(1.5)
                         
                     }
-                    .padding(.vertical,4)
+                    .padding(.vertical,5)
                     .padding(.horizontal)
                 }
                 .foregroundColor(.white)
@@ -50,10 +50,10 @@ struct BottomNav: View {
                 }){
                     HStack{
                         
-                        Image(systemName: "person.circle.fill").foregroundColor(.white).imageScale(.large)
+                        Image(systemName: "gamecontroller.fill").foregroundColor(.white).scaleEffect(1.5)
                         
                     }
-                    .padding(.vertical,4)
+                    .padding(.vertical,5)
                     .padding(.horizontal)
                     
                 }
@@ -66,10 +66,10 @@ struct BottomNav: View {
                     self.view = 3
                 }){
                     HStack{
-                        Image(systemName: "gamecontroller.fill").foregroundColor(.white).imageScale(.large)
+                        Image(systemName: "person.circle.fill").foregroundColor(.white).scaleEffect(1.5)
                         
                     }
-                    .padding(.vertical,4)
+                    .padding(.vertical,5)
                     .padding(.horizontal)
                     
                 }
