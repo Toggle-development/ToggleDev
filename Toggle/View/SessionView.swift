@@ -21,7 +21,19 @@ struct SessionView: View {
     var body: some View {
         VStack(spacing: 0){
             TopNav().padding(.bottom, 10)
-            MainFeed()
+            switch self.view{
+                case 0:
+                    MainFeed()
+                case 1:
+                    SearchView()
+                case 2 :
+                    MainFeed()
+                case 3:
+                    AccountView()
+                default:
+                    MainFeed()
+            
+            }
             BottomNav(view: self.$view)
         }
         .edgesIgnoringSafeArea(.bottom)

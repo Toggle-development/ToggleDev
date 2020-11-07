@@ -48,7 +48,7 @@ struct TopBarOfCell: View {
         HStack {
             GeometryReader { geo in
                 HStack {
-                    Image(systemName:"plus.circle.fill")
+                    Image(systemName:"person.circle.fill")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: UIScreen.main.bounds.width / 6, height: geo.size
@@ -78,14 +78,26 @@ struct VideoView: UIViewRepresentable {
 }
 
 struct UserInteractions: View {
+    @State var liked = false
     var body: some View {
-        HStack {
-            Image(systemName: "suit.heart").imageScale(.large)
-                .padding(.horizontal)
-            Image(systemName: "message").imageScale(.large)
+        HStack{
+            ZStack {
+                Image(systemName: "heart.fill")
+                    .opacity(liked ? 1 : 0)
+                    .scaleEffect(liked ? 1.0 : 0.1)
+                    .animation(.linear).scaleEffect(1.7)
+                Image(systemName: "heart").scaleEffect(1.7)
+            }
+            .padding(.horizontal, 20)
+            .onTapGesture {
+                self.liked.toggle()
+            }
+            .foregroundColor(liked ? .red : .black)
+            Image(systemName: "message").scaleEffect(1.7)
             Spacer()
+
         }
-    }
+     }
 }
 
 struct CaptionsAndComments: View {
@@ -99,5 +111,11 @@ struct CaptionsAndComments: View {
         }
         .padding(.leading, 5)
         .padding(.bottom, 20)
+    }
+}
+
+struct PostCell_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
     }
 }
