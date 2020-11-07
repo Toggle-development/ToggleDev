@@ -50,7 +50,7 @@ struct BottomNav: View {
                 }){
                     HStack{
                         
-                        Image(systemName: "plus.circle.fill").foregroundColor(.white).imageScale(.large)
+                        Image(systemName: "person.circle.fill").foregroundColor(.white).imageScale(.large)
                         
                     }
                     .padding(.vertical,4)

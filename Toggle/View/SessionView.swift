@@ -19,9 +19,7 @@ struct SessionView: View {
     
     var body: some View {
         VStack{
-        
-            TopNav().ignoresSafeArea().padding(.vertical, -1)
-                /*Button(action: {
+            TopNav().ignoresSafeArea()                  /*Button(action: {
                     sessionManager.signOutLocally()
                 }) {
                     Text("Sign Out")
@@ -48,6 +46,8 @@ struct SessionView: View {
                     }
                 }
             }
+            .zIndex(-1)
+            .scaleEffect(1.8)
             
             BottomNav(view: self.$view)
         }

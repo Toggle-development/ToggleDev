@@ -22,7 +22,7 @@ struct TopNav: View {
                             
                             Image("logo1").frame(width: 120.0, height: 30.0).imageScale(.small)
                         }
-                        .padding(.vertical,4)
+                        .padding(.vertical, 2)
                         .padding(.horizontal)
                         
                     }
@@ -36,7 +36,7 @@ struct TopNav: View {
                             Image(systemName: "plus.circle.fill").foregroundColor(.white).imageScale(.large)
                             
                         }
-                        .padding(.vertical,4)
+                        .padding(.vertical,6)
                         .padding(.horizontal)
                         
                     }
@@ -48,7 +48,7 @@ struct TopNav: View {
             }
             .padding(.horizontal,20)
             .animation(.default)
-            .padding(.vertical, 5)
+            .padding(.vertical, 2)
             
             HStack(spacing: 0) {
                 Button( action: {
@@ -77,9 +77,11 @@ struct TopNav: View {
             }
             .animation(.default)
         }
+        
         .padding(.top,UIApplication.shared.windows.first?.safeAreaInsets.top)
         .background(Color.gray.opacity(4))
-        .cornerRadius(22)
+        
+        
     }
 }
 
