@@ -12,6 +12,8 @@
 		0158A417254C068B00B8C5FC /* listenToSessionUpdates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0158A416254C068B00B8C5FC /* listenToSessionUpdates.swift */; };
 		0158A421254C0C2100B8C5FC /* PasswordManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0158A420254C0C2100B8C5FC /* PasswordManagement.swift */; };
 		0158A435254D534600B8C5FC /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0158A434254D534600B8C5FC /* SignUpView.swift */; };
+		01746B282555140500F96474 /* MainFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01746B272555140500F96474 /* MainFeed.swift */; };
+		01746B2D2555496000F96474 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01746B2C2555496000F96474 /* PlayerView.swift */; };
 		01992C7C254E8B1500D861D1 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01992C7B254E8B1500D861D1 /* SessionManager.swift */; };
 		01992C84254E8DB800D861D1 /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01992C83254E8DB800D861D1 /* ConfirmationView.swift */; };
 		01992C89254E8DE300D861D1 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01992C88254E8DE300D861D1 /* SessionView.swift */; };
@@ -52,6 +54,8 @@
 		0158A416254C068B00B8C5FC /* listenToSessionUpdates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listenToSessionUpdates.swift; sourceTree = "<group>"; };
 		0158A420254C0C2100B8C5FC /* PasswordManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagement.swift; sourceTree = "<group>"; };
 		0158A434254D534600B8C5FC /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		01746B272555140500F96474 /* MainFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeed.swift; sourceTree = "<group>"; };
+		01746B2C2555496000F96474 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		01992C7B254E8B1500D861D1 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		01992C83254E8DB800D861D1 /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
 		01992C88254E8DE300D861D1 /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
@@ -114,6 +118,8 @@
 				46CB79692553A057004CD5D9 /* HomeView.swift */,
 				460A273A2553E67000ABFD50 /* BottomNav.swift */,
 				4672117C2553ED790037AF07 /* TopNav.swift */,
+				01746B272555140500F96474 /* MainFeed.swift */,
+				01746B2C2555496000F96474 /* PlayerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -403,6 +409,7 @@
 				01992C84254E8DB800D861D1 /* ConfirmationView.swift in Sources */,
 				46C0E10B254932220020BEDD /* LoginView.swift in Sources */,
 				0158A412254C041D00B8C5FC /* currentSessionInfo.swift in Sources */,
+				01746B2D2555496000F96474 /* PlayerView.swift in Sources */,
 				0158A435254D534600B8C5FC /* SignUpView.swift in Sources */,
 				460A273B2553E67000ABFD50 /* BottomNav.swift in Sources */,
 				011BAF71254F8003004EE48B /* RootView.swift in Sources */,
@@ -412,6 +419,7 @@
 				46C0E109254932220020BEDD /* ToggleApp.swift in Sources */,
 				01992C89254E8DE300D861D1 /* SessionView.swift in Sources */,
 				0158A417254C068B00B8C5FC /* listenToSessionUpdates.swift in Sources */,
+				01746B282555140500F96474 /* MainFeed.swift in Sources */,
 				01992C7C254E8B1500D861D1 /* SessionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
