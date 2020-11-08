@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010FF5F925576581002A5242 /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010FF5F825576581002A5242 /* DiscoverView.swift */; };
 		011BAF71254F8003004EE48B /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011BAF70254F8003004EE48B /* RootView.swift */; };
 		0158A412254C041D00B8C5FC /* currentSessionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0158A411254C041D00B8C5FC /* currentSessionInfo.swift */; };
 		0158A417254C068B00B8C5FC /* listenToSessionUpdates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0158A416254C068B00B8C5FC /* listenToSessionUpdates.swift */; };
 		0158A421254C0C2100B8C5FC /* PasswordManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0158A420254C0C2100B8C5FC /* PasswordManagement.swift */; };
 		0158A435254D534600B8C5FC /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0158A434254D534600B8C5FC /* SignUpView.swift */; };
+		015F13572557AB830022EB26 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F13562557AB830022EB26 /* NotificationView.swift */; };
 		01746B282555140500F96474 /* MainFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01746B272555140500F96474 /* MainFeed.swift */; };
 		01746B2D2555496000F96474 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01746B2C2555496000F96474 /* PlayerView.swift */; };
 		018F52862556AC260050ECA0 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018F52852556AC260050ECA0 /* Post.swift */; };
@@ -22,7 +24,6 @@
 		01992C7C254E8B1500D861D1 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01992C7B254E8B1500D861D1 /* SessionManager.swift */; };
 		01992C84254E8DB800D861D1 /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01992C83254E8DB800D861D1 /* ConfirmationView.swift */; };
 		01992C89254E8DE300D861D1 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01992C88254E8DE300D861D1 /* SessionView.swift */; };
-		460A273B2553E67000ABFD50 /* BottomNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A273A2553E67000ABFD50 /* BottomNav.swift */; };
 		4672117D2553ED790037AF07 /* TopNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4672117C2553ED790037AF07 /* TopNav.swift */; };
 		46C0E109254932220020BEDD /* ToggleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0E108254932220020BEDD /* ToggleApp.swift */; };
 		46C0E10B254932220020BEDD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0E10A254932220020BEDD /* LoginView.swift */; };
@@ -30,7 +31,6 @@
 		46C0E110254932230020BEDD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46C0E10F254932230020BEDD /* Preview Assets.xcassets */; };
 		46C0E11B254932230020BEDD /* ToggleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0E11A254932230020BEDD /* ToggleTests.swift */; };
 		46C0E126254932230020BEDD /* ToggleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0E125254932230020BEDD /* ToggleUITests.swift */; };
-		46CB796A2553A057004CD5D9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CB79692553A057004CD5D9 /* HomeView.swift */; };
 		6249E919254A456E00DF3787 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 6249E917254A456E00DF3787 /* awsconfiguration.json */; };
 		6249E91A254A456E00DF3787 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 6249E918254A456E00DF3787 /* amplifyconfiguration.json */; };
 		8FCB73AB10557EB1D921266B /* Pods_Toggle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C126DC19DFDA03D78323360 /* Pods_Toggle.framework */; };
@@ -54,11 +54,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		010FF5F825576581002A5242 /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
 		011BAF70254F8003004EE48B /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		0158A411254C041D00B8C5FC /* currentSessionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = currentSessionInfo.swift; sourceTree = "<group>"; };
 		0158A416254C068B00B8C5FC /* listenToSessionUpdates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = listenToSessionUpdates.swift; sourceTree = "<group>"; };
 		0158A420254C0C2100B8C5FC /* PasswordManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagement.swift; sourceTree = "<group>"; };
 		0158A434254D534600B8C5FC /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		015F13562557AB830022EB26 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		01746B272555140500F96474 /* MainFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeed.swift; sourceTree = "<group>"; };
 		01746B2C2555496000F96474 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		018F52852556AC260050ECA0 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -69,7 +71,6 @@
 		01992C7B254E8B1500D861D1 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		01992C83254E8DB800D861D1 /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
 		01992C88254E8DE300D861D1 /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
-		460A273A2553E67000ABFD50 /* BottomNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNav.swift; sourceTree = "<group>"; };
 		4672117C2553ED790037AF07 /* TopNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNav.swift; sourceTree = "<group>"; };
 		46C0E105254932220020BEDD /* Toggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46C0E108254932220020BEDD /* ToggleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleApp.swift; sourceTree = "<group>"; };
@@ -83,7 +84,6 @@
 		46C0E121254932230020BEDD /* ToggleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToggleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46C0E125254932230020BEDD /* ToggleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleUITests.swift; sourceTree = "<group>"; };
 		46C0E127254932230020BEDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		46CB79692553A057004CD5D9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		6249E917254A456E00DF3787 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = SOURCE_ROOT; };
 		6249E918254A456E00DF3787 /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = SOURCE_ROOT; };
 		8C126DC19DFDA03D78323360 /* Pods_Toggle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Toggle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,19 +120,19 @@
 		0158A3CD254BF5B100B8C5FC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				011BAF70254F8003004EE48B /* RootView.swift */,
 				46C0E10A254932220020BEDD /* LoginView.swift */,
 				0158A434254D534600B8C5FC /* SignUpView.swift */,
 				01992C83254E8DB800D861D1 /* ConfirmationView.swift */,
 				01992C88254E8DE300D861D1 /* SessionView.swift */,
-				018F52AC2556D95A0050ECA0 /* AccountView.swift */,
-				018F52A72556D9400050ECA0 /* SearchView.swift */,
-				011BAF70254F8003004EE48B /* RootView.swift */,
-				46CB79692553A057004CD5D9 /* HomeView.swift */,
-				460A273A2553E67000ABFD50 /* BottomNav.swift */,
-				4672117C2553ED790037AF07 /* TopNav.swift */,
 				01746B272555140500F96474 /* MainFeed.swift */,
+				018F52A72556D9400050ECA0 /* SearchView.swift */,
+				018F52AC2556D95A0050ECA0 /* AccountView.swift */,
+				010FF5F825576581002A5242 /* DiscoverView.swift */,
+				4672117C2553ED790037AF07 /* TopNav.swift */,
 				01746B2C2555496000F96474 /* PlayerView.swift */,
 				018F528F2556AD480050ECA0 /* PostCell.swift */,
+				015F13562557AB830022EB26 /* NotificationView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -424,15 +424,15 @@
 				01992C84254E8DB800D861D1 /* ConfirmationView.swift in Sources */,
 				018F52A82556D9400050ECA0 /* SearchView.swift in Sources */,
 				46C0E10B254932220020BEDD /* LoginView.swift in Sources */,
+				015F13572557AB830022EB26 /* NotificationView.swift in Sources */,
 				0158A412254C041D00B8C5FC /* currentSessionInfo.swift in Sources */,
 				018F52AD2556D95A0050ECA0 /* AccountView.swift in Sources */,
 				01746B2D2555496000F96474 /* PlayerView.swift in Sources */,
 				0158A435254D534600B8C5FC /* SignUpView.swift in Sources */,
 				018F52902556AD480050ECA0 /* PostCell.swift in Sources */,
-				460A273B2553E67000ABFD50 /* BottomNav.swift in Sources */,
 				018F528B2556AC620050ECA0 /* PostViewModel.swift in Sources */,
 				011BAF71254F8003004EE48B /* RootView.swift in Sources */,
-				46CB796A2553A057004CD5D9 /* HomeView.swift in Sources */,
+				010FF5F925576581002A5242 /* DiscoverView.swift in Sources */,
 				4672117D2553ED790037AF07 /* TopNav.swift in Sources */,
 				0158A421254C0C2100B8C5FC /* PasswordManagement.swift in Sources */,
 				46C0E109254932220020BEDD /* ToggleApp.swift in Sources */,

@@ -9,9 +9,7 @@ import SwiftUI
 
 struct SearchView: View {
     var body: some View {
-        Spacer()
         Text("search coming soon")
-        Spacer()
     }
 }
 

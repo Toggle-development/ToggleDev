@@ -9,9 +9,7 @@ import SwiftUI
 
 struct AccountView: View {
     var body: some View {
-        Spacer()
         Image(systemName: "person.circle.fill").scaleEffect(5)
-        Spacer()
     }
 }
 

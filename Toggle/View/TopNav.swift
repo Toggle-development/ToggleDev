@@ -8,8 +8,6 @@
 import SwiftUI
 import UIKit
 struct TopNav: View {
-    @State var index = 1
-    @State var view = 1
     var body: some View {
         VStack(spacing: 0) {
             HStack{
@@ -38,33 +36,6 @@ struct TopNav: View {
             .padding(.horizontal,20)
             .animation(.default)
             .padding(.vertical, 5)
-            
-            HStack(spacing: 0) {
-                Button( action: {
-                    self.index = 1
-                    self.view = 1
-                }) {
-                    Text("Following")
-                        .frame(width: UIScreen.main.bounds.width / 2 ,height:UIScreen.main.bounds.width / 10,  alignment: .center)
-                        .font(.headline)
-                        .foregroundColor(Color.black)
-                }
-                .background(Color.blue.opacity(self.index == 1 ? 0.3 : 0))
-                .cornerRadius(22)
-                
-                Button( action: {
-                    self.index = 2
-                    self.view = 2
-                }) {
-                    Text("Discover")
-                        .frame(width: UIScreen.main.bounds.width / 2 ,height:UIScreen.main.bounds.width / 10,  alignment: .center)
-                        .font(.headline)
-                        .foregroundColor(Color.black)
-                }
-                .background(Color.blue.opacity(self.index == 2 ? 0.3 : 0))
-                .cornerRadius(22)
-            }
-            .animation(.default)
         }
     }
 }

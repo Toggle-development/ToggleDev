@@ -24,12 +24,6 @@ struct PostCell: View {
             let player = AVPlayer(url: (URL(string: videoURL))!) // need to change this can't force wrap URL
             VideoView(previewLength: 60, player: player)
                 .frame(width: UIScreen.main.bounds.width, height: postFrame.size.height / 1.5)
-                .onAppear() {
-                    player.play()
-                }
-                .onDisappear() {
-                    player.seek(to: CMTime(seconds: 0, preferredTimescale: CMTimeScale(1)))
-                }
             
             UserInteractions()
                 .frame(width: UIScreen.main.bounds.width, height: postFrame.size.width / 10)
@@ -47,14 +41,14 @@ struct TopBarOfCell: View {
     var body: some View {
         HStack {
             GeometryReader { geo in
-                HStack {
+                HStack(spacing : 0) {
                     Image(systemName:"person.circle.fill")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: UIScreen.main.bounds.width / 6, height: geo.size
                                 .height, alignment: .center)
                         .clipShape(Circle())
-                        .padding(.leading, 15)
+                        .padding(.leading, 8)
                     
                     Text(postOwner).fontWeight(.heavy)
                 }

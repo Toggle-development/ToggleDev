@@ -19,24 +19,27 @@ struct SessionView: View {
     let user: AuthUser
     
     var body: some View {
-        VStack(spacing: 0){
-            TopNav().padding(.bottom, 10)
-            switch self.view{
-                case 0:
-                    MainFeed()
-                case 1:
-                    SearchView()
-                case 2 :
-                    MainFeed()
-                case 3:
-                    AccountView()
-                default:
-                    MainFeed()
+        TabView{
+            MainFeed()
+                .tabItem {
+                    Image(systemName: "house")
+                }
             
-            }
-            BottomNav(view: self.$view)
+            SearchView()
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
+                }
+            
+            NotificationView()
+                .tabItem {
+                    Image(systemName: "gamecontroller")
+                }
+            
+            AccountView()
+                .tabItem {
+                    Image(systemName: "person.circle")
+                }
         }
-        .edgesIgnoringSafeArea(.bottom)
     }
 }
 
