@@ -1,6 +1,6 @@
 {
   "auth": {
-    "toggle6574f738": {
+    "togglec5a73703": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -20,7 +20,11 @@
       "output": {
         "authConfig": {
           "defaultAuthentication": {
-            "authenticationType": "AWS_IAM"
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 365,
+              "description": "upload-key"
+            }
           },
           "additionalAuthenticationProviders": []
         }

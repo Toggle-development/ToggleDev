@@ -1,0 +1,54 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-toggle-dev-172749-authRole",
+      "UnauthRoleArn": "arn:aws:iam::172704994193:role/amplify-toggle-dev-172749-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::172704994193:role/amplify-toggle-dev-172749-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-toggle-dev-172749-deployment",
+      "UnauthRoleName": "amplify-toggle-dev-172749-unauthRole",
+      "StackName": "amplify-toggle-dev-172749",
+      "StackId": "arn:aws:cloudformation:us-west-2:172704994193:stack/amplify-toggle-dev-172749/941b0fe0-197d-11eb-895f-02c233fc463d",
+      "AmplifyAppId": "d1wa4tcdhgo687"
+    }
+  },
+  "auth": {},
+  "storage": {
+    "toggle": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-toggle-dev-172749-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+        "logicalId": "storagetoggle"
+      },
+      "lastPushTimeStamp": "2020-11-03T21:33:10.042Z",
+      "output": {
+        "BucketName": "toggle-storage172749-dev",
+        "Region": "us-west-2"
+      },
+      "lastPushDirHash": "sasYa8GR5qW6iVg0ew/5RuuHg6k="
+    }
+  },
+  "api": {
+    "toggle": {
+      "service": "AppSync",
+      "providerPlugin": "awscloudformation",
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "AWS_IAM"
+          },
+          "additionalAuthenticationProviders": []
+        },
+        "GraphQLAPIIdOutput": "rvrtsadvp5cyvkhkjs6kg4tup4",
+        "GraphQLAPIEndpointOutput": "https://oxx2defdwfetxd7g26d3il3zci.appsync-api.us-west-2.amazonaws.com/graphql"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-toggle-dev-172749-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apitoggle"
+      },
+      "lastPushTimeStamp": "2020-11-03T21:33:11.285Z",
+      "lastPushDirHash": "fp0msnJqaTd3YdANpUmMV9wJtXk="
+    }
+  }
+}

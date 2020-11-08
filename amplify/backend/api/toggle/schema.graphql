@@ -1,5 +1,5 @@
-type Todo @model {
+type Post @model @auth(rules: [{ allow: public }]) {
   id: ID!
-  name: String!
-  description: String
+  title: String!
+  poster: String!
 }
