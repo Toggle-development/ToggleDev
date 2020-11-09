@@ -51,11 +51,13 @@ struct NavigationConfigurator: UIViewControllerRepresentable {
 }
 
 struct UploadVideoButton: View {
+    @State var showVideoPicker = false
+    @State var image: UIImage?
     var body: some View {
-        Button(action: {
+        Button(action: { didTapButton()
             // add action for + button
         }){
-            Image(systemName:"plus.circle.fill")
+            Image(systemName:"camera.circle.fill")
                 .foregroundColor(.white).imageScale(.large)
                 .padding(.vertical,4)
                 .padding(.horizontal)
@@ -64,6 +66,15 @@ struct UploadVideoButton: View {
         .foregroundColor(.white)
         .background(Color.black)
         .clipShape(RoundedRectangle(cornerRadius: 11))
+        .sheet(isPresented: $showVideoPicker, content: {
+            ImagePicker(image: $image)
+            
+        })
+    }
+    
+    func didTapButton(){
+        showVideoPicker.toggle()
+        
     }
 }
 

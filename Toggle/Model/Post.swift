@@ -1,15 +1,17 @@
-//
-//  Post.swift
-//  Toggle
-//
-//  Created by Walid Rafei on 11/7/20.
-//
-
+// swiftlint:disable all
+import Amplify
 import Foundation
-struct Post: Identifiable, Hashable {
-    var id: Int
-    let postOwner: String
-    let caption: String
-    let numberOfLikes: Int
-    let videoURL: String
+
+public struct Post: Model {
+  public let id: String
+  public var title: String
+  public var poster: String
+  
+  public init(id: String = UUID().uuidString,
+      title: String,
+      poster: String) {
+      self.id = id
+      self.title = title
+      self.poster = poster
+  }
 }

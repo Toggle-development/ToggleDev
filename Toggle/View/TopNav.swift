@@ -8,6 +8,7 @@
 import SwiftUI
 import UIKit
 struct TopNav: View {
+    @State var showVideoPicker = false
     var body: some View {
         VStack(spacing: 0) {
             HStack{
@@ -17,7 +18,7 @@ struct TopNav: View {
                         .padding(.horizontal)
                     
                     Spacer()
-                    Button(action: {
+                    Button(action: { 
                         // add action for + button
                     }){
                             
@@ -38,6 +39,8 @@ struct TopNav: View {
             .padding(.vertical, 5)
         }
     }
+    
+  
 }
 
 struct TopNav_Previews: PreviewProvider {
