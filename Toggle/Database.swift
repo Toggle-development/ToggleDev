@@ -36,22 +36,19 @@ class Database {
     }
     
     func uploadData(key: String, data: Data) {
+        print("Attempting to Upload data")
+        Amplify.Storage.uploadData(key: "ExampleKey", data: data,
+                                   progressListener: { progress in
+                                    print("Progress: \(progress)")
+                                   }, resultListener: { (event) in
+                                    switch event {
+                                    case .success(let data):
+                                        print("Completed: \(data)")
+                                    case .failure(let storageError):
+                                        print("Failed: \(storageError.errorDescription). \(storageError.recoverySuggestion)")
+                                    }
+                                   })
         
-        let storageOperation = Amplify.Storage.uploadData(key: key, data: data)
-        let progressSink = storageOperation
-            .progressPublisher
-            .sink { progress in print("Progress: \(progress)") }
-        
-        let resultSink = storageOperation
-            .resultPublisher
-            .sink {
-                if case let .failure(storageError) = $0 {
-                    print("Failed: \(storageError.errorDescription). \(storageError.recoverySuggestion)")
-                }
-            }
-            receiveValue: { data in
-                print("Completed: \(data)")
-            }
     }
     
     func savePost(post: Post) {
