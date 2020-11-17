@@ -14,7 +14,6 @@ struct SessionView: View {
     @EnvironmentObject var sessionManager: SessionManager
     @State private var presentError: Bool = false
     @State private var errorMessage: String = ""
-    @State var view = 0
     
     let user: AuthUser
     
@@ -24,7 +23,6 @@ struct SessionView: View {
                 .tabItem {
                     Image(systemName: "house")
                 }
-            
             SearchView()
                 .tabItem {
                     Image(systemName: "magnifyingglass")

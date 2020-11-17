@@ -20,6 +20,7 @@ struct MainFeed: View {
                     // for each post in post in posts create a post cell
                     ForEach(postViewModel.posts, id: \.id) {post in
                         PostCell(postOwner: post.postOwner, videoURL: post.videoURL, caption: post.caption, postFrame: geometry)
+                        
                     }
                 }
                 .navigationBarTitle("", displayMode: .inline)
@@ -39,7 +40,7 @@ struct MainFeed_Previews: PreviewProvider {
 
 struct NavigationConfigurator: UIViewControllerRepresentable {
     var configure: (UINavigationController) -> Void = { _ in }
-
+    
     func makeUIViewController(context: UIViewControllerRepresentableContext<NavigationConfigurator>) -> UIViewController {
         UIViewController()
     }
@@ -51,30 +52,20 @@ struct NavigationConfigurator: UIViewControllerRepresentable {
 }
 
 struct UploadVideoButton: View {
-    @State var showVideoPicker = false
-    @State var image: UIImage?
+    @State var videoURL: NSURL?
     var body: some View {
-        Button(action: { didTapButton()
-            // add action for + button
-        }){
+        NavigationLink(destination: ImagePicker(videoURL: $videoURL)) {
             Image(systemName:"camera.circle.fill")
                 .foregroundColor(.white).imageScale(.large)
                 .padding(.vertical,4)
                 .padding(.horizontal)
-            
+                .foregroundColor(.white)
+                .background(Color.black)
+                .clipShape(RoundedRectangle(cornerRadius: 11))
         }
-        .foregroundColor(.white)
-        .background(Color.black)
-        .clipShape(RoundedRectangle(cornerRadius: 11))
-        .sheet(isPresented: $showVideoPicker, content: {
-            ImagePicker(image: $image)
-            
-        })
-    }
-    
-    func didTapButton(){
-        showVideoPicker.toggle()
-        
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitle("Choose Video")
+        .navigationBarBackButtonHidden(true)
     }
 }
 

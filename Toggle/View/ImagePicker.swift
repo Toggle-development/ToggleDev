@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ImagePicker: UIViewControllerRepresentable {
     
-    @Binding var image: UIImage?
+    @Binding var videoURL: NSURL?
     @Environment(\.presentationMode) var presentationMode
     
     typealias UIViewControllerType =  UIImagePickerController
@@ -21,19 +21,19 @@ struct ImagePicker: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIImagePickerController {
         let controller  = UIImagePickerController()
         controller.delegate = context.coordinator
+        controller.mediaTypes = ["public.movie"]
         return controller
     }
     
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {
         
     }
-    
-  
 }
 
 class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate{
     
     let imagePicker: ImagePicker
+    
     init(imagePicker: ImagePicker){
         self.imagePicker = imagePicker
         
@@ -46,8 +46,9 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imagePicker.presentationMode.wrappedValue.dismiss()
         
-        guard let image = info[.originalImage] as? UIImage else {return}
-        imagePicker.image = image
+        guard let videoURL = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerReferenceURL")] as? NSURL else {return}
+        imagePicker.videoURL = videoURL
+        print(videoURL)
     }
     
     

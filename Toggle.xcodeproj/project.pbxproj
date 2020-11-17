@@ -23,7 +23,6 @@
 		01992C7C254E8B1500D861D1 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01992C7B254E8B1500D861D1 /* SessionManager.swift */; };
 		01992C84254E8DB800D861D1 /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01992C83254E8DB800D861D1 /* ConfirmationView.swift */; };
 		01992C89254E8DE300D861D1 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01992C88254E8DE300D861D1 /* SessionView.swift */; };
-		4672117D2553ED790037AF07 /* TopNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4672117C2553ED790037AF07 /* TopNav.swift */; };
 		46C0E109254932220020BEDD /* ToggleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0E108254932220020BEDD /* ToggleApp.swift */; };
 		46C0E10B254932220020BEDD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0E10A254932220020BEDD /* LoginView.swift */; };
 		46C0E10D254932230020BEDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46C0E10C254932230020BEDD /* Assets.xcassets */; };
@@ -74,7 +73,6 @@
 		01992C7B254E8B1500D861D1 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		01992C83254E8DB800D861D1 /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
 		01992C88254E8DE300D861D1 /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
-		4672117C2553ED790037AF07 /* TopNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNav.swift; sourceTree = "<group>"; };
 		46C0E105254932220020BEDD /* Toggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46C0E108254932220020BEDD /* ToggleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleApp.swift; sourceTree = "<group>"; };
 		46C0E10A254932220020BEDD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -137,7 +135,6 @@
 				018F52A72556D9400050ECA0 /* SearchView.swift */,
 				018F52AC2556D95A0050ECA0 /* AccountView.swift */,
 				010FF5F825576581002A5242 /* DiscoverView.swift */,
-				4672117C2553ED790037AF07 /* TopNav.swift */,
 				01746B2C2555496000F96474 /* PlayerView.swift */,
 				018F528F2556AD480050ECA0 /* PostCell.swift */,
 				015F13562557AB830022EB26 /* NotificationView.swift */,
@@ -447,7 +444,6 @@
 				011BAF71254F8003004EE48B /* RootView.swift in Sources */,
 				46DC977C2559477F004CD262 /* Post.swift in Sources */,
 				010FF5F925576581002A5242 /* DiscoverView.swift in Sources */,
-				4672117D2553ED790037AF07 /* TopNav.swift in Sources */,
 				46DC977A2559477F004CD262 /* AmplifyModels.swift in Sources */,
 				46DC97612559460F004CD262 /* OGPost.swift in Sources */,
 				0158A421254C0C2100B8C5FC /* PasswordManagement.swift in Sources */,
@@ -616,6 +612,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Toggle/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Toggle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -638,6 +635,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Toggle/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Toggle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

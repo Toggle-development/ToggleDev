@@ -13,17 +13,26 @@ struct PostCell: View {
     let videoURL: String
     let caption: String
     let postFrame: GeometryProxy
-        
+    
     var body: some View {
         
         VStack {
             TopBarOfCell(postOwner: postOwner)
                 .frame(width: UIScreen.main.bounds.width, height: postFrame.size.height / 15)
                 .padding(.top, 5)
-
+            
             let player = AVPlayer(url: (URL(string: videoURL))!) // need to change this can't force wrap URL
+            //Text("\(postFrame.frame(in: .global).maxY)") ( can get min and max y of full screen from this (first and last post)
+            // can get the height of the video by doing postFrame.size.height / 1.5
             VideoView(previewLength: 60, player: player)
                 .frame(width: UIScreen.main.bounds.width, height: postFrame.size.height / 1.5)
+                .onAppear() {
+                    player.play()
+                }
+                .onDisappear() {
+                    player.seek(to: CMTime(seconds: 0, preferredTimescale: CMTimeScale(1)))
+                    player.pause()
+                }
             
             UserInteractions()
                 .frame(width: UIScreen.main.bounds.width, height: postFrame.size.width / 10)
@@ -79,7 +88,7 @@ struct UserInteractions: View {
                 Image(systemName: "heart.fill")
                     .opacity(liked ? 1 : 0)
                     .scaleEffect(liked ? 1.0 : 0.1)
-                    .animation(.linear).scaleEffect(1.7)
+                    .animation(.linear(duration: 0.2)).scaleEffect(1.7)
                 Image(systemName: "heart").scaleEffect(1.7)
             }
             .padding(.horizontal, 20)
@@ -89,9 +98,9 @@ struct UserInteractions: View {
             .foregroundColor(liked ? .red : .black)
             Image(systemName: "message").scaleEffect(1.7)
             Spacer()
-
+            
         }
-     }
+    }
 }
 
 struct CaptionsAndComments: View {
