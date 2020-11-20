@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import Amplify
+import AmplifyPlugins
+import Combine
 
 struct ImagePicker: UIViewControllerRepresentable {
     
-    @Binding var videoURL: NSURL?
+    @Binding var videoURL: URL?
     @Environment(\.presentationMode) var presentationMode
     
     typealias UIViewControllerType =  UIImagePickerController
@@ -46,8 +49,21 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imagePicker.presentationMode.wrappedValue.dismiss()
         
-        guard let videoURL = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerReferenceURL")] as? NSURL else {return}
+        guard let videoURL = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerReferenceURL")] as? URL else {return}
         imagePicker.videoURL = videoURL
+        let key = UUID().uuidString +  ".mov"
+        _ = Amplify.Storage.uploadFile(key: key, local: videoURL  ){ result in
+            switch result{
+            case .success:
+                print("uploaded video")
+            case .failure(let error):
+                print("Failed- \(error)")
+                
+            
+            }
+            
+        }
+        
         print(videoURL)
     }
     

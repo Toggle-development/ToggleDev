@@ -7,6 +7,8 @@
 
 import SwiftUI
 import AVKit
+import AmplifyPlugins
+import Amplify
 
 struct MainFeed: View {
     //observe the posts ovject from PostViewModel to update screen according to data we get.
@@ -52,7 +54,7 @@ struct NavigationConfigurator: UIViewControllerRepresentable {
 }
 
 struct UploadVideoButton: View {
-    @State var videoURL: NSURL?
+    @State var videoURL: URL?
     var body: some View {
         NavigationLink(destination: ImagePicker(videoURL: $videoURL)) {
             Image(systemName:"camera.circle.fill")
@@ -66,8 +68,28 @@ struct UploadVideoButton: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarTitle("Choose Video")
         .navigationBarBackButtonHidden(true)
+        
+        
     }
+    
+    func upload(_ video: URL){
+        
+        let key = UUID().uuidString +  ".mov"
+        _ = Amplify.Storage.uploadFile(key: key, local: video  ){ result in
+            switch result{
+            case .success:
+                print("uploaded video")
+            case .failure(let error):
+                print("Failed- \(error)")
+                
+            
+            }
+            
+        }
+    }
+
 }
+
 
 struct AppLogo: View {
     var body: some View {

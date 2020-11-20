@@ -2,7 +2,7 @@
 import Amplify
 import Foundation
 
-public struct Post: Model, Identifiable{
+public struct Post: Model {
   public let id: String
   public var postOwner: String
   public var caption: String

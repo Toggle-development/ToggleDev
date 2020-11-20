@@ -1,5 +1,7 @@
-type Post @model {
+type Post @model @auth(rules: [{ allow: owner, operations: [create, delete, update] }]){ 
   id: ID!
-  title: String!
-  poster: String!
+  postOwner: String!
+  caption: String!
+  numberOfLikes: Int!
+  videoUrl: String!
 }

@@ -1,0 +1,15 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-toggle-drewdev-205358-authRole",
+      "UnauthRoleArn": "arn:aws:iam::172704994193:role/amplify-toggle-drewdev-205358-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::172704994193:role/amplify-toggle-drewdev-205358-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-toggle-drewdev-205358-deployment",
+      "UnauthRoleName": "amplify-toggle-drewdev-205358-unauthRole",
+      "StackName": "amplify-toggle-drewdev-205358",
+      "StackId": "arn:aws:cloudformation:us-west-2:172704994193:stack/amplify-toggle-drewdev-205358/677918d0-2aec-11eb-83c4-021f9cf80633",
+      "AmplifyAppId": "d1wa4tcdhgo687"
+    }
+  }
+}

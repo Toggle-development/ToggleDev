@@ -23,6 +23,7 @@
 		01992C7C254E8B1500D861D1 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01992C7B254E8B1500D861D1 /* SessionManager.swift */; };
 		01992C84254E8DB800D861D1 /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01992C83254E8DB800D861D1 /* ConfirmationView.swift */; };
 		01992C89254E8DE300D861D1 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01992C88254E8DE300D861D1 /* SessionView.swift */; };
+		4655C4B725670DC1002905B1 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4655C4B625670DC1002905B1 /* Post.swift */; };
 		46C0E109254932220020BEDD /* ToggleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0E108254932220020BEDD /* ToggleApp.swift */; };
 		46C0E10B254932220020BEDD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0E10A254932220020BEDD /* LoginView.swift */; };
 		46C0E10D254932230020BEDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46C0E10C254932230020BEDD /* Assets.xcassets */; };
@@ -32,7 +33,6 @@
 		46DC97612559460F004CD262 /* OGPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC97602559460F004CD262 /* OGPost.swift */; };
 		46DC977A2559477F004CD262 /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC97772559477F004CD262 /* AmplifyModels.swift */; };
 		46DC977B2559477F004CD262 /* Post+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC97782559477F004CD262 /* Post+Schema.swift */; };
-		46DC977C2559477F004CD262 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC97792559477F004CD262 /* Post.swift */; };
 		46DE163B2559501C00BA6873 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE163A2559501C00BA6873 /* ImagePicker.swift */; };
 		6249E919254A456E00DF3787 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 6249E917254A456E00DF3787 /* awsconfiguration.json */; };
 		6249E91A254A456E00DF3787 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 6249E918254A456E00DF3787 /* amplifyconfiguration.json */; };
@@ -73,6 +73,7 @@
 		01992C7B254E8B1500D861D1 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		01992C83254E8DB800D861D1 /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
 		01992C88254E8DE300D861D1 /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
+		4655C4B625670DC1002905B1 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = amplify/generated/models/Post.swift; sourceTree = SOURCE_ROOT; };
 		46C0E105254932220020BEDD /* Toggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46C0E108254932220020BEDD /* ToggleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleApp.swift; sourceTree = "<group>"; };
 		46C0E10A254932220020BEDD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -88,7 +89,6 @@
 		46DC97602559460F004CD262 /* OGPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OGPost.swift; sourceTree = "<group>"; };
 		46DC97772559477F004CD262 /* AmplifyModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AmplifyModels.swift; path = ../../amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
 		46DC97782559477F004CD262 /* Post+Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Post+Schema.swift"; path = "../../amplify/generated/models/Post+Schema.swift"; sourceTree = "<group>"; };
-		46DC97792559477F004CD262 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		46DE163A2559501C00BA6873 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		6249E917254A456E00DF3787 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = SOURCE_ROOT; };
 		6249E918254A456E00DF3787 /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = SOURCE_ROOT; };
@@ -146,9 +146,9 @@
 		0158A406254C02DA00B8C5FC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4655C4B625670DC1002905B1 /* Post.swift */,
 				46DC97782559477F004CD262 /* Post+Schema.swift */,
 				46DC97772559477F004CD262 /* AmplifyModels.swift */,
-				46DC97792559477F004CD262 /* Post.swift */,
 				46DC97602559460F004CD262 /* OGPost.swift */,
 			);
 			path = Model;
@@ -433,6 +433,7 @@
 				01992C84254E8DB800D861D1 /* ConfirmationView.swift in Sources */,
 				018F52A82556D9400050ECA0 /* SearchView.swift in Sources */,
 				46DC977B2559477F004CD262 /* Post+Schema.swift in Sources */,
+				4655C4B725670DC1002905B1 /* Post.swift in Sources */,
 				46C0E10B254932220020BEDD /* LoginView.swift in Sources */,
 				015F13572557AB830022EB26 /* NotificationView.swift in Sources */,
 				0158A412254C041D00B8C5FC /* currentSessionInfo.swift in Sources */,
@@ -442,7 +443,6 @@
 				018F52902556AD480050ECA0 /* PostCell.swift in Sources */,
 				018F528B2556AC620050ECA0 /* PostViewModel.swift in Sources */,
 				011BAF71254F8003004EE48B /* RootView.swift in Sources */,
-				46DC977C2559477F004CD262 /* Post.swift in Sources */,
 				010FF5F925576581002A5242 /* DiscoverView.swift in Sources */,
 				46DC977A2559477F004CD262 /* AmplifyModels.swift in Sources */,
 				46DC97612559460F004CD262 /* OGPost.swift in Sources */,
