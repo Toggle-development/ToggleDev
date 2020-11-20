@@ -13,5 +13,11 @@
         "GetAttPostTableStreamArn": "Post",
         "GetAttPostDataSourceName": "Post",
         "GetAttPostTableName": "Post"
+    },
+    "ResolverConfig": {
+        "project": {
+            "ConflictHandler": "AUTOMERGE",
+            "ConflictDetection": "VERSION"
+        }
     }
 }

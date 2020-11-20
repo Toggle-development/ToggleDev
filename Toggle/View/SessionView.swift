@@ -42,6 +42,7 @@ struct SessionView: View {
 }
 
 struct SessionView_Previews: PreviewProvider {
+    @Binding var dummy: Bool
     struct DummyUser: AuthUser {
         let userId: String = "1"
         let username: String = "dummy"

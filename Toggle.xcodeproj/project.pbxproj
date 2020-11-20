@@ -23,6 +23,7 @@
 		01992C7C254E8B1500D861D1 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01992C7B254E8B1500D861D1 /* SessionManager.swift */; };
 		01992C84254E8DB800D861D1 /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01992C83254E8DB800D861D1 /* ConfirmationView.swift */; };
 		01992C89254E8DE300D861D1 /* SessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01992C88254E8DE300D861D1 /* SessionView.swift */; };
+		019AAF2525679AB2001D0FA3 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019AAF2425679AB2001D0FA3 /* DataManager.swift */; };
 		46C0E109254932220020BEDD /* ToggleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0E108254932220020BEDD /* ToggleApp.swift */; };
 		46C0E10B254932220020BEDD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0E10A254932220020BEDD /* LoginView.swift */; };
 		46C0E10D254932230020BEDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46C0E10C254932230020BEDD /* Assets.xcassets */; };
@@ -73,6 +74,7 @@
 		01992C7B254E8B1500D861D1 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		01992C83254E8DB800D861D1 /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
 		01992C88254E8DE300D861D1 /* SessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionView.swift; sourceTree = "<group>"; };
+		019AAF2425679AB2001D0FA3 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		46C0E105254932220020BEDD /* Toggle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toggle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46C0E108254932220020BEDD /* ToggleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleApp.swift; sourceTree = "<group>"; };
 		46C0E10A254932220020BEDD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 		0158A407254C02EC00B8C5FC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				019AAF2325679A98001D0FA3 /* AWSAPI */,
 				0158A408254C034600B8C5FC /* Authentication */,
 				018F528A2556AC620050ECA0 /* PostViewModel.swift */,
 			);
@@ -172,6 +175,14 @@
 				0158A420254C0C2100B8C5FC /* PasswordManagement.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		019AAF2325679A98001D0FA3 /* AWSAPI */ = {
+			isa = PBXGroup;
+			children = (
+				019AAF2425679AB2001D0FA3 /* DataManager.swift */,
+			);
+			path = AWSAPI;
 			sourceTree = "<group>";
 		};
 		0BEA6BDAF0BF3CCFB93BCFF7 /* Pods */ = {
@@ -431,6 +442,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01992C84254E8DB800D861D1 /* ConfirmationView.swift in Sources */,
+				019AAF2525679AB2001D0FA3 /* DataManager.swift in Sources */,
 				018F52A82556D9400050ECA0 /* SearchView.swift in Sources */,
 				46DC977B2559477F004CD262 /* Post+Schema.swift in Sources */,
 				46C0E10B254932220020BEDD /* LoginView.swift in Sources */,

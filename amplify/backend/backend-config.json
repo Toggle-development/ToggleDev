@@ -20,7 +20,10 @@
       "output": {
         "authConfig": {
           "defaultAuthentication": {
-            "authenticationType": "AWS_IAM"
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authtogglec5a73703"
+            }
           },
           "additionalAuthenticationProviders": []
         }

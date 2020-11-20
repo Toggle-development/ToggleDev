@@ -11,7 +11,11 @@ import AVKit
 struct MainFeed: View {
     //observe the posts ovject from PostViewModel to update screen according to data we get.
     @ObservedObject private var postViewModel = PostViewModel()
-    
+    let dataManager = DataManager()
+
+    init() {
+        dataManager.createPost()
+    }
     var body: some View {
         
         GeometryReader { geometry in
@@ -20,22 +24,24 @@ struct MainFeed: View {
                     // for each post in post in posts create a post cell
                     ForEach(postViewModel.posts, id: \.id) {post in
                         PostCell(postOwner: post.postOwner, videoURL: post.videoURL, caption: post.caption, postFrame: geometry)
-                        
                     }
                 }
                 .navigationBarTitle("", displayMode: .inline)
                 .navigationBarItems(leading: AppLogo(),trailing: UploadVideoButton())
+                
             }
             .navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }
 
+#if DEBUG
 struct MainFeed_Previews: PreviewProvider {
     static var previews: some View {
         MainFeed()
     }
 }
+#endif
 
 
 struct NavigationConfigurator: UIViewControllerRepresentable {
