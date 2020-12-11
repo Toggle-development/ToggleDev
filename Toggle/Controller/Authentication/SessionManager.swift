@@ -50,17 +50,24 @@ final class SessionManager: ObservableObject {
      @param: email (string)
      */
     func signUp(username: String, password: String, email: String) {
-        if email == "" {
+        /// Ideally this shouldn't be part of this class, it should move into the View
+        /// where all the verifications suppose to be done
+        /// TODO: - Shift to View later
+        if email.isEmpty {
             print("No Email Provided")
             sendErrorToView("signup-error", "Please Enter Your Email")
-        } else if password.count < 8 {
+        } else if !(password.isValidPassword()) {
             print("Invalid password, must be at least 8 characters")
             sendErrorToView("signup-error", "password must be at least 8 characters")
         }
         else {
+            
             let username = String(username.filter { !" \n\t\r".contains($0)}) // filter out white spaces
             let userAttributes = [AuthUserAttribute(.email, value: email)]
             let options = AuthSignUpRequest.Options(userAttributes: userAttributes)
+            
+            
+            /// all the above code need to be moved into the View class
             Amplify.Auth.signUp(username: username, password: password, options: options) {[weak self] result in
                 switch result {
                 case .success(let signUpResult):
