@@ -1,6 +1,6 @@
 {
   "auth": {
-    "toggle6574f738": {
+    "togglec5a73703": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -20,7 +20,10 @@
       "output": {
         "authConfig": {
           "defaultAuthentication": {
-            "authenticationType": "AWS_IAM"
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authtogglec5a73703"
+            }
           },
           "additionalAuthenticationProviders": []
         }
