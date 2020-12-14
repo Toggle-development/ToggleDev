@@ -1,5 +1,7 @@
-type Todo @model {
+type Post @model @auth(rules: [{ allow: owner, operations: [create, delete, update] }]){ 
   id: ID!
-  name: String!
-  description: String
+  postOwner: String!
+  caption: String!
+  numberOfLikes: Int!
+  videoUrl: String!
 }

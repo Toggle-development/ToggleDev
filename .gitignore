@@ -1,3 +1,11 @@
+#pods
+Pods/
+
+#random
+.DS_Store
+.gitignore~
+..gitignore.un~
+
 #amplify
 amplify/\#current-cloud-backend
 amplify/.config/local-*
@@ -8,9 +16,7 @@ build/
 dist/
 node_modules/
 aws-exports.js
-awsconfiguration.json
-amplifyconfiguration.json
+
 amplify-build-config.json
 amplify-gradle-config.json
 amplifytools.xcconfig
-*.lock
