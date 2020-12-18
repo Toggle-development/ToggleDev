@@ -36,7 +36,6 @@ class Database {
     }
     
     func uploadData(key: String, data: Data) {
-        print("Attempting to Upload data")
         Amplify.Storage.uploadData(key: "ExampleKey", data: data,
                                    progressListener: { progress in
                                     print("Progress: \(progress)")
@@ -47,7 +46,11 @@ class Database {
                                     case .failure(let storageError):
                                         print("Failed: \(storageError.errorDescription). \(storageError.recoverySuggestion)")
                                     }
+<<<<<<< Updated upstream
         })
+=======
+                            })
+>>>>>>> Stashed changes
         
     }
     

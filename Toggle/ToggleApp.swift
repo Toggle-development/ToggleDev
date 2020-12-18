@@ -25,8 +25,9 @@ struct ToggleApp: App {
             // simplified error handling for the tutorial
             print("Could not initialize Amplify: \(error)")
         }
-        Amplify.DataStore.clear()
+        //Amplify.DataStore.clear()
     }
+    
     func fetchCurrentAuthSession() {
         _ = Amplify.Auth.fetchAuthSession { result in
             switch result {
@@ -40,7 +41,7 @@ struct ToggleApp: App {
 
     public init() {
         configureAmplify()
-        fetchCurrentAuthSession()
+        //fetchCurrentAuthSession()
     }
     
     var body: some Scene {
