@@ -1,0 +1,7 @@
+type Post @model {
+  id: ID!
+  postOwner: String!
+  caption: String!
+  numberOfLikes: Int!
+  videoUrl: String!
+}

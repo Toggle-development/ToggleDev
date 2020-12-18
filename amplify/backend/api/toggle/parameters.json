@@ -1,5 +1,11 @@
 {
     "AppSyncApiName": "toggle",
     "DynamoDBBillingMode": "PAY_PER_REQUEST",
-    "DynamoDBEnableServerSideEncryption": false
+    "DynamoDBEnableServerSideEncryption": false,
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authtogglec5a73703",
+            "Outputs.UserPoolId"
+        ]
+    }
 }

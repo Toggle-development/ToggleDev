@@ -47,7 +47,7 @@ class Database {
                                     case .failure(let storageError):
                                         print("Failed: \(storageError.errorDescription). \(storageError.recoverySuggestion)")
                                     }
-                                   })
+        })
         
     }
     
