@@ -17,6 +17,6 @@ public struct Post: Model {
       self.postOwner = postOwner
       self.caption = caption
       self.numberOfLikes = numberOfLikes
-      self.videoUrl = videoUrl
+      self.videoUrl = videoUrl // recommend to change this to videoKey. The videoURL is acquired from S3 using the key.
   }
 }

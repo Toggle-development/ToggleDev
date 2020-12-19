@@ -50,7 +50,7 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
         let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         if let url = info[.mediaURL] as? URL {
             do {
-                let docDirURL: URL = documentsDirectoryURL.appendingPathComponent("videoName1.mov")
+                let docDirURL: URL = documentsDirectoryURL.appendingPathComponent("test.mov")
                 if FileManager.default.fileExists(atPath: docDirURL.path) {
                     do {
                         try FileManager.default.removeItem(at: docDirURL)
@@ -59,12 +59,16 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
                         print("Failed to remove file.")
                     }
                 }
-                print("Moving video from \(url) to \(docDirURL)")
                 try FileManager.default.moveItem(at: url, to: docDirURL)
-                print("movie saved in application documents dir.")
+                print("Movie saved in application store.")
                 let dataManager = DataManager()
-                dataManager.uploadFile(fileKey: "videoName1.mov")
-                dataManager.getS3URL(key: "videoName1.mov")
+                dataManager.uploadFile(fileKey: "test.mov")
+                
+                // this is a line for testing purposes, this function should really be used somewhere else.
+                dataManager.getS3URL(fileKey: "test.mov") { url in
+                    // successfully got the URL.
+                    print("URL: \(url)")
+                }
             } catch {
                 print("Error: ImagePickerController")
                 print(error)

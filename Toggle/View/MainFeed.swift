@@ -9,12 +9,12 @@ import SwiftUI
 import AVKit
 
 struct MainFeed: View {
-    //observe the posts ovject from PostViewModel to update screen according to data we get.
+    //observe the posts object from PostViewModel to update screen according to data we get.
     @ObservedObject private var postViewModel = PostViewModel()
     let dataManager = DataManager()
 
     init() {
-        dataManager.createPost()
+        dataManager.createTestPost()
     }
     var body: some View {
         

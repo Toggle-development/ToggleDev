@@ -31,14 +31,19 @@ class DataManager {
         }
     }
     
-    func createPost() {
-        let post = Post(postOwner: "walid", caption: "test", numberOfLikes: 5, videoUrl: "test")
+    func createTestPost() {
+        let testPost = Post(postOwner: "James", caption: "Wow this is epic.", numberOfLikes: 999, videoUrl: "test.mov")
+        self.uploadFile(fileKey: "test.mov")
+        self.createPost(post: testPost)
+    }
+    
+    func createPost(post: Post) {
         Amplify.API.mutate(request: .create(post)) { event in
             switch event {
             case .success(let result):
                 switch result {
                 case .success(let post):
-                    print("Successfully created the todo: \(post)")
+                    print("Successfully created the post: \(post)")
                 case .failure(let graphQLError):
                     print("Failed to create graphql \(graphQLError)")
                 }
@@ -94,15 +99,14 @@ class DataManager {
                         })
     }
     // -> URL
-    func getS3URL(key: String) {
-        Amplify.Storage.getURL(key: "myKey") { event in
+    func getS3URL(fileKey: String, completionHandler:@escaping(URL) -> ()) {
+        Amplify.Storage.getURL(key: fileKey) { event in
             switch event {
             case let .success(url):
-                print("Completed: \(url)")
-                //return url
+                print("S3URL: Completed: \(url)")
+                completionHandler(url)
             case let .failure(storageError):
-                print("Failed: \(storageError.errorDescription). \(storageError.recoverySuggestion)")
-                //return nil
+                print("S3URL: Failed: \(storageError.errorDescription). \(storageError.recoverySuggestion)")
             }
         }
     }
