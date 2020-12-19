@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Photos
 
 struct ImagePicker: UIViewControllerRepresentable {
     
@@ -36,7 +37,6 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
     
     init(imagePicker: ImagePicker){
         self.imagePicker = imagePicker
-        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -45,12 +45,31 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imagePicker.presentationMode.wrappedValue.dismiss()
-        
         guard let videoURL = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerReferenceURL")] as? NSURL else {return}
         imagePicker.videoURL = videoURL
-        print(videoURL)
+        let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        if let url = info[.mediaURL] as? URL {
+            do {
+                let docDirURL: URL = documentsDirectoryURL.appendingPathComponent("videoName1.mov")
+                if FileManager.default.fileExists(atPath: docDirURL.path) {
+                    do {
+                        try FileManager.default.removeItem(at: docDirURL)
+                        print("Removed pre-existing file at \(docDirURL)")
+                    } catch {
+                        print("Failed to remove file.")
+                    }
+                }
+                print("Moving video from \(url) to \(docDirURL)")
+                try FileManager.default.moveItem(at: url, to: docDirURL)
+                print("movie saved in application documents dir.")
+                let dataManager = DataManager()
+                dataManager.uploadFile(fileKey: "videoName1.mov")
+                dataManager.getS3URL(key: "videoName1.mov")
+            } catch {
+                print("Error: ImagePickerController")
+                print(error)
+            }
+        }
     }
-    
-    
 }
 
