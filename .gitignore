@@ -23,3 +23,5 @@ amplify-gradle-config.json
 amplifytools.xcconfig
 Toggle.xcodeproj/*
 Toggle.xcworkspace/*
+Podfile*
+*.mov
