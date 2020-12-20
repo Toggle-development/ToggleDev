@@ -7,15 +7,13 @@
 
 import SwiftUI
 import AVKit
+import AmplifyPlugins
+import Amplify
 
 struct MainFeed: View {
     //observe the posts ovject from PostViewModel to update screen according to data we get.
     @ObservedObject private var postViewModel = PostViewModel()
-    let dataManager = DataManager()
-
-    init() {
-        dataManager.createPost()
-    }
+    
     var body: some View {
         
         GeometryReader { geometry in
@@ -24,24 +22,23 @@ struct MainFeed: View {
                     // for each post in post in posts create a post cell
                     ForEach(postViewModel.posts, id: \.id) {post in
                         PostCell(postOwner: post.postOwner, videoURL: post.videoURL, caption: post.caption, postFrame: geometry)
+                        
                     }
                 }
                 .navigationBarTitle("", displayMode: .inline)
                 .navigationBarItems(leading: AppLogo(),trailing: UploadVideoButton())
-                
             }
             .navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }
 
-#if DEBUG
 struct MainFeed_Previews: PreviewProvider {
     static var previews: some View {
         MainFeed()
+            .foregroundColor(.gray)
     }
 }
-#endif
 
 
 struct NavigationConfigurator: UIViewControllerRepresentable {
@@ -62,22 +59,42 @@ struct UploadVideoButton: View {
     var body: some View {
         NavigationLink(destination: ImagePicker(videoURL: $videoURL)) {
             Image(systemName:"camera.circle.fill")
-                .foregroundColor(.white).imageScale(.large)
+                .foregroundColor(Color("tog")).scaleEffect(2.0)
                 .padding(.vertical,4)
                 .padding(.horizontal)
-                .foregroundColor(.white)
-                .background(Color.black)
-                .clipShape(RoundedRectangle(cornerRadius: 11))
+                .foregroundColor(Color("tog"))
+              
+                
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarTitle("Choose Video")
         .navigationBarBackButtonHidden(true)
+        
+        
     }
+    
+    func upload(_ video: URL){
+        
+        let key = UUID().uuidString +  ".mov"
+        _ = Amplify.Storage.uploadFile(key: key, local: video  ){ result in
+            switch result{
+            case .success:
+                print("uploaded video")
+            case .failure(let error):
+                print("Failed- \(error)")
+                
+            
+            }
+            
+        }
+    }
+
 }
+
 
 struct AppLogo: View {
     var body: some View {
-        Image("logo1")
+        Image("togLogo")
             .imageScale(.large)
     }
 }

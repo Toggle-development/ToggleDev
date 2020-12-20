@@ -17,15 +17,13 @@ struct PostCell: View {
     var body: some View {
         
         VStack {
-            TopBarOfCell(postOwner: postOwner)
-                .frame(width: UIScreen.main.bounds.width, height: postFrame.size.height / 15)
-                .padding(.top, 5)
+           
             
             let player = AVPlayer(url: (URL(string: videoURL))!) // need to change this can't force wrap URL
             //Text("\(postFrame.frame(in: .global).maxY)") ( can get min and max y of full screen from this (first and last post)
             // can get the height of the video by doing postFrame.size.height / 1.5
             VideoView(previewLength: 60, player: player)
-                .frame(width: UIScreen.main.bounds.width, height: postFrame.size.height / 1.5)
+                .frame(width: UIScreen.main.bounds.width/1.1, height: postFrame.size.height / 1.5)
                 .onAppear() {
                     player.play()
                 }
@@ -33,14 +31,26 @@ struct PostCell: View {
                     player.seek(to: CMTime(seconds: 0, preferredTimescale: CMTimeScale(1)))
                     player.pause()
                 }
+           
+            TopBarOfCell(postOwner: postOwner)
+                .frame( width: UIScreen.main.bounds.width/1.1, height: postFrame.size.height / 15)
+                .padding(.top, 5)
+                
+            
+           
+         
+            CaptionsAndComments(caption: caption, postOwner: postOwner)
             
             UserInteractions()
-                .frame(width: UIScreen.main.bounds.width, height: postFrame.size.width / 10)
+                .frame(width: UIScreen.main.bounds.width/2, height: postFrame.size.width / 10)
                 .padding(.bottom, 5)
             
-            CaptionsAndComments(caption: caption, postOwner: postOwner)
         }
+        .frame(width: UIScreen.main.bounds.width, height: postFrame.size.height/1.1, alignment: .center)
+        
         .listRowInsets(.init())
+        .background(Color(UIColor.black).opacity(0.2))
+        Spacer()
     }
 }
 
@@ -54,15 +64,17 @@ struct TopBarOfCell: View {
                     Image(systemName:"person.circle.fill")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: UIScreen.main.bounds.width / 6, height: geo.size
-                                .height, alignment: .center)
+                        .frame(width: UIScreen.main.bounds.width / 6.3, height: geo.size
+                                .height/1.3, alignment: .center)
                         .clipShape(Circle())
-                        .padding(.leading, 8)
+                        
                     
                     Text(postOwner).fontWeight(.heavy)
                 }
+                
             }
-        }
+            }
+        
     }
 }
 
@@ -85,6 +97,7 @@ struct UserInteractions: View {
     var body: some View {
         HStack{
             ZStack {
+                Spacer()
                 Image(systemName: "heart.fill")
                     .opacity(liked ? 1 : 0)
                     .scaleEffect(liked ? 1.0 : 0.1)
@@ -95,8 +108,11 @@ struct UserInteractions: View {
             .onTapGesture {
                 self.liked.toggle()
             }
-            .foregroundColor(liked ? .red : .black)
+            .foregroundColor(liked ? Color("tog") : .gray)
+            Spacer(minLength:UIScreen.main.bounds.width/4 )
             Image(systemName: "message").scaleEffect(1.7)
+            Spacer(minLength:UIScreen.main.bounds.width/4)
+            Image(systemName: "arrowshape.turn.up.right").scaleEffect(1.7)
             Spacer()
             
         }
