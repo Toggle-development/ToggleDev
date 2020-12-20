@@ -23,9 +23,6 @@ struct SessionView: View {
                 .tabItem {
                     Image(systemName: "house")
                 }
-                
-               
-               
             SearchView()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
@@ -35,7 +32,6 @@ struct SessionView: View {
                 .tabItem {
                     Image(systemName: "gamecontroller")
                 }
-                
             AccountView()
                 .tabItem {
                     Image(systemName: "person.circle")

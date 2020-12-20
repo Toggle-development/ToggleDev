@@ -13,15 +13,17 @@ struct PostCell: View {
     let videoURL: String
     let caption: String
     let postFrame: GeometryProxy
+    let numberOfLikes: Int
+    let postID: Int
+    
     
     var body: some View {
-        
         VStack {
            
             
-            let player = AVPlayer(url: (URL(string: videoURL))!) // need to change this can't force wrap URL
-            //Text("\(postFrame.frame(in: .global).maxY)") ( can get min and max y of full screen from this (first and last post)
-            // can get the height of the video by doing postFrame.size.height / 1.5
+            let asset = AVAsset(url: URL(string: videoURL)!)
+            let playerItem = AVPlayerItem(asset: asset)
+            let player = AVPlayer(playerItem: playerItem)
             VideoView(previewLength: 60, player: player)
                 .frame(width: UIScreen.main.bounds.width/1.1, height: postFrame.size.height / 1.5)
                 .onAppear() {
@@ -31,23 +33,19 @@ struct PostCell: View {
                     player.seek(to: CMTime(seconds: 0, preferredTimescale: CMTimeScale(1)))
                     player.pause()
                 }
-           
             TopBarOfCell(postOwner: postOwner)
                 .frame( width: UIScreen.main.bounds.width/1.1, height: postFrame.size.height / 15)
                 .padding(.top, 5)
-                
+                     
             
-           
-         
-            CaptionsAndComments(caption: caption, postOwner: postOwner)
-            
+            CaptionsAndComments(caption: caption, postOwner: postOwner, numberOfLikes: numberOfLikes)
+
             UserInteractions()
                 .frame(width: UIScreen.main.bounds.width/2, height: postFrame.size.width / 10)
                 .padding(.bottom, 5)
-            
+
         }
         .frame(width: UIScreen.main.bounds.width, height: postFrame.size.height/1.1, alignment: .center)
-        
         .listRowInsets(.init())
         .background(Color(UIColor.black).opacity(0.2))
         Spacer()
@@ -88,7 +86,7 @@ struct VideoView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIView, context: Context) {
-        
+        PlayerView(player: player ,frame: .zero, previewLength: previewLength ?? 15).layer.addSublayer(AVPlayerLayer())
     }
 }
 
@@ -104,7 +102,7 @@ struct UserInteractions: View {
                     .animation(.linear(duration: 0.2)).scaleEffect(1.7)
                 Image(systemName: "heart").scaleEffect(1.7)
             }
-            .padding(.horizontal, 20)
+            .padding(.trailing, 20)
             .onTapGesture {
                 self.liked.toggle()
             }
@@ -114,22 +112,33 @@ struct UserInteractions: View {
             Spacer(minLength:UIScreen.main.bounds.width/4)
             Image(systemName: "arrowshape.turn.up.right").scaleEffect(1.7)
             Spacer()
-            
+            Text("44 minutes ago")
+                .fontWeight(.heavy)
+                .foregroundColor(.gray)
+                .padding(.trailing, 10)
+                .font(Font.system(size:15, design: .default))
         }
+        .padding(.leading, 15)
     }
 }
 
 struct CaptionsAndComments: View {
     let caption: String
     let postOwner: String
+    let numberOfLikes: Int
     
     var body: some View {
-        HStack(alignment: .top ,spacing: 5) {
-            Text("\(postOwner) ").fontWeight(.heavy) + Text(caption)
-            Spacer()
+        VStack(alignment: .leading) {
+            Text("\(numberOfLikes) likes").fontWeight(.heavy)
+                .padding(.leading, 10)
+                .padding(.bottom, 1)
+            HStack(alignment: .top ,spacing: 5) {
+                Text("\(postOwner) ").fontWeight(.heavy) + Text(caption)
+                Spacer()
+            }
+            .padding(.leading, 10)
+            .padding(.bottom, 20)
         }
-        .padding(.leading, 5)
-        .padding(.bottom, 20)
     }
 }
 

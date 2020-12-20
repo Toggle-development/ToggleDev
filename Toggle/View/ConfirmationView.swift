@@ -89,7 +89,7 @@ struct ConfirmationView: View {
 }
 struct ConfirmationView_Previews: PreviewProvider {
     static var previews: some View {
-        ConfirmationView(username: "Dummy", password: "Dummy").environmentObject(SessionManager())
+        ConfirmationView(username: "test", password: "test").environmentObject(SessionManager())
     }
 }
 
