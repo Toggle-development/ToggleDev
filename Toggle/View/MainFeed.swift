@@ -8,30 +8,51 @@
 import SwiftUI
 import AVKit
 
+struct MainFeedIntegratedController: UIViewControllerRepresentable {
+    
+    var videos = [OGPost]()
+    
+    func makeUIViewController(context: Context) -> MainFeedVC {
+        
+        let mainFeedVC = UIStoryboard(name: "MainFeed", bundle: nil).instantiateViewController(withIdentifier: "MainFeedVC") as! MainFeedVC
+        mainFeedVC.postArray = videos
+        return mainFeedVC
+        
+    }
+    func updateUIViewController(_ uiViewController: MainFeedVC, context: Context) { }
+}
+
 struct MainFeed: View {
     //observe the posts ovject from PostViewModel to update screen according to data we get.
     @ObservedObject private var postViewModel = PostViewModel()
+    
     let dataManager = DataManager()
-
+    
     init() {
         dataManager.createPost()
     }
+    
     var body: some View {
         
-        GeometryReader { geometry in
-            NavigationView {
-                List {
-                    // for each post in post in posts create a post cell
-                    ForEach(postViewModel.posts, id: \.id) {post in
-                        PostCell(postOwner: post.postOwner, videoURL: post.videoURL, caption: post.caption, postFrame: geometry)
-                    }
-                }
-                .navigationBarTitle("", displayMode: .inline)
-                .navigationBarItems(leading: AppLogo(),trailing: UploadVideoButton())
-                
-            }
-            .navigationViewStyle(StackNavigationViewStyle())
-        }
+        MainFeedIntegratedController(videos: postViewModel.posts).edgesIgnoringSafeArea(.all)
+        
+        
+        /*
+         GeometryReader { geometry in
+         NavigationView {
+         List {
+         // for each post in post in posts create a post cell
+         ForEach(postViewModel.posts, id: \.id) {post in
+         PostCell(postOwner: post.postOwner, videoURL: post.videoURL, caption: post.caption, postFrame: geometry)
+         }
+         }
+         .navigationBarTitle("", displayMode: .inline)
+         .navigationBarItems(leading: AppLogo(),trailing: UploadVideoButton())
+         
+         }
+         .navigationViewStyle(StackNavigationViewStyle())
+         }*/
+        
     }
 }
 

@@ -22,6 +22,7 @@ PODS:
     - AWSCore (~> 2.18.0)
     - AWSPluginsCore (= 1.4.0)
     - AWSS3 (~> 2.18.0)
+  - AnimatedCollectionViewLayout (1.1.0)
   - AppSyncRealTimeClient (1.4.2):
     - Starscream (~> 3.1.0)
   - AWSAuthCore (2.18.0):
@@ -54,11 +55,13 @@ DEPENDENCIES:
   - AmplifyPlugins/AWSCognitoAuthPlugin
   - AmplifyPlugins/AWSDataStorePlugin
   - AmplifyPlugins/AWSS3StoragePlugin
+  - AnimatedCollectionViewLayout
 
 SPEC REPOS:
   trunk:
     - Amplify
     - AmplifyPlugins
+    - AnimatedCollectionViewLayout
     - AppSyncRealTimeClient
     - AWSAuthCore
     - AWSCognitoIdentityProvider
@@ -74,6 +77,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Amplify: 7974e4da6a0fcae8b79afd4fc38e78d1b54a6ea7
   AmplifyPlugins: d16bc2e4d3bae00699b476f1a2d045b7851c583c
+  AnimatedCollectionViewLayout: 0c1a38c4be115c525c887be183fc91ef65737c5d
   AppSyncRealTimeClient: 7fb160294d067b6c0c4b3c4ab91e953fd4cfba30
   AWSAuthCore: d350688ae52b9644a0713901e436cb529dce15b7
   AWSCognitoIdentityProvider: ae02dbb7d2f53291adbfd52e7334286abde8bb3f
@@ -86,6 +90,6 @@ SPEC CHECKSUMS:
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
 
-PODFILE CHECKSUM: d07e8f8a77c165b8a0c42c5771bd55e15090bbac
+PODFILE CHECKSUM: e1ed071f3fe017d3283f1cff8e98cc0d3455c362
 
 COCOAPODS: 1.8.4

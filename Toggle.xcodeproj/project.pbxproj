@@ -38,6 +38,9 @@
 		6249E919254A456E00DF3787 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 6249E917254A456E00DF3787 /* awsconfiguration.json */; };
 		6249E91A254A456E00DF3787 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 6249E918254A456E00DF3787 /* amplifyconfiguration.json */; };
 		8FCB73AB10557EB1D921266B /* Pods_Toggle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C126DC19DFDA03D78323360 /* Pods_Toggle.framework */; };
+		E9805309258D6CA000EF80CC /* MainFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9805307258D6CA000EF80CC /* MainFeedVC.swift */; };
+		E980530A258D6CA000EF80CC /* MainFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9805308258D6CA000EF80CC /* MainFeedCell.swift */; };
+		E9805324258D6E7A00EF80CC /* MainFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9805323258D6E7A00EF80CC /* MainFeed.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +98,9 @@
 		6249E917254A456E00DF3787 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = SOURCE_ROOT; };
 		6249E918254A456E00DF3787 /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = SOURCE_ROOT; };
 		8C126DC19DFDA03D78323360 /* Pods_Toggle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Toggle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9805307258D6CA000EF80CC /* MainFeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainFeedVC.swift; sourceTree = "<group>"; };
+		E9805308258D6CA000EF80CC /* MainFeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainFeedCell.swift; sourceTree = "<group>"; };
+		E9805323258D6E7A00EF80CC /* MainFeed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainFeed.storyboard; sourceTree = "<group>"; };
 		EBC89CA85A289F7C6B6B9E75 /* Pods-Toggle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toggle.debug.xcconfig"; path = "Target Support Files/Pods-Toggle/Pods-Toggle.debug.xcconfig"; sourceTree = "<group>"; };
 		F0965E39D03C9D589CB195D7 /* Pods-Toggle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toggle.release.xcconfig"; path = "Target Support Files/Pods-Toggle/Pods-Toggle.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -219,6 +225,7 @@
 		46C0E107254932220020BEDD /* Toggle */ = {
 			isa = PBXGroup;
 			children = (
+				E9805301258D6C7C00EF80CC /* UIViewController */,
 				6249E918254A456E00DF3787 /* amplifyconfiguration.json */,
 				6249E917254A456E00DF3787 /* awsconfiguration.json */,
 				46C0E108254932220020BEDD /* ToggleApp.swift */,
@@ -264,6 +271,16 @@
 				8C126DC19DFDA03D78323360 /* Pods_Toggle.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E9805301258D6C7C00EF80CC /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E9805307258D6CA000EF80CC /* MainFeedVC.swift */,
+				E9805308258D6CA000EF80CC /* MainFeedCell.swift */,
+				E9805323258D6E7A00EF80CC /* MainFeed.storyboard */,
+			);
+			path = UIViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,6 +392,7 @@
 				46C0E10D254932230020BEDD /* Assets.xcassets in Resources */,
 				6249E919254A456E00DF3787 /* awsconfiguration.json in Resources */,
 				6249E91A254A456E00DF3787 /* amplifyconfiguration.json in Resources */,
+				E9805324258D6E7A00EF80CC /* MainFeed.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +470,7 @@
 				01746B2D2555496000F96474 /* PlayerView.swift in Sources */,
 				0158A435254D534600B8C5FC /* SignUpView.swift in Sources */,
 				018F52902556AD480050ECA0 /* PostCell.swift in Sources */,
+				E980530A258D6CA000EF80CC /* MainFeedCell.swift in Sources */,
 				018F528B2556AC620050ECA0 /* PostViewModel.swift in Sources */,
 				011BAF71254F8003004EE48B /* RootView.swift in Sources */,
 				46DC977C2559477F004CD262 /* Post.swift in Sources */,
@@ -464,6 +483,7 @@
 				0158A417254C068B00B8C5FC /* listenToSessionUpdates.swift in Sources */,
 				46DE163B2559501C00BA6873 /* ImagePicker.swift in Sources */,
 				01746B282555140500F96474 /* MainFeed.swift in Sources */,
+				E9805309258D6CA000EF80CC /* MainFeedVC.swift in Sources */,
 				01992C7C254E8B1500D861D1 /* SessionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -622,7 +642,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"Toggle/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
@@ -634,6 +654,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = toggle.Toggle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -645,7 +666,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"Toggle/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
@@ -657,6 +678,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = toggle.Toggle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
