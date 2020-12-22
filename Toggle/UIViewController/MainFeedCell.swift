@@ -33,14 +33,28 @@ class MainFeedCell: UICollectionViewCell {
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var videoPlayerView: VideoPlayerView!
     @IBOutlet weak var thumbnailIV: UIImageView!
-    
+    @IBOutlet weak var userIV: UIImageView!
+
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var commentButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
+
     private var isAlreadyPlaying = true
     
     public func configure(with model: OGPost) {
+        userIV.image = UIImage.init(systemName: "person.circle.fill")
+        likeButton.setImage(UIImage.init(systemName: "heart"), for: .normal)
+        commentButton.setImage(UIImage.init(systemName: "message"), for: .normal)
+        shareButton.setImage(UIImage.init(systemName: "arrowshape.turn.up.right"), for: .normal)
+
+        setupVideo(videoURL: model.videoURL)
+    }
+    
+    private func setupVideo(videoURL: String) {
         
         loader.startAnimating()
         
-        guard let videoURL = URL(string: model.videoURL) else { return }
+        guard let videoURL = URL(string: videoURL) else { return }
         let player         = AVPlayer(url: videoURL)
         
         videoPlayerView.playerLayer.frame        = self.frame
@@ -52,6 +66,7 @@ class MainFeedCell: UICollectionViewCell {
             player.seek(to: CMTime(seconds: 0, preferredTimescale: CMTimeScale(1)))
         })
         
+        /// TODO: - This needs to be removed as well
         player.addObserver(self, forKeyPath: "currentItem.loadedTimeRanges", options: NSKeyValueObservingOptions.new, context: nil)
     }
     

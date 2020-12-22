@@ -11,15 +11,22 @@ import AVFoundation
 
 class MainFeedVC: UIViewController, UIScrollViewDelegate {
     
+    //MARK: - IBOutlets
+    @IBOutlet weak var cameraIV: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
     var postArray = [OGPost]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let layout = AnimatedCollectionViewLayout()
         layout.animator = ParallaxAttributesAnimator()
         layout.scrollDirection = .vertical
+        
         collectionView.collectionViewLayout = layout
+        
+        cameraIV.image = UIImage.init(systemName: "camera.circle.fill")
     }
   
     
@@ -52,7 +59,8 @@ extension MainFeedVC: UICollectionViewDataSource, UICollectionViewDelegate {
 //MARK: - UICollectionViewDelegateFlowLayout
 extension MainFeedVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        let height = collectionView.frame.height - 60
+        return CGSize(width: UIScreen.main.bounds.width, height: height)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
@@ -64,3 +72,4 @@ extension MainFeedVC: UICollectionViewDelegateFlowLayout {
         return .zero
     }
 }
+
