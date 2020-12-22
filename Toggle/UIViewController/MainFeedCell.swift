@@ -13,7 +13,7 @@ class VideoPlayerView: UIView {
     override static var layerClass: AnyClass {
         return AVPlayerLayer.self;
     }
-
+    
     var playerLayer: AVPlayerLayer {
         return layer as! AVPlayerLayer;
     }
@@ -34,10 +34,12 @@ class MainFeedCell: UICollectionViewCell {
     @IBOutlet weak var videoPlayerView: VideoPlayerView!
     @IBOutlet weak var thumbnailIV: UIImageView!
     
+    private var isAlreadyPlaying = true
+    
     public func configure(with model: OGPost) {
         
         loader.startAnimating()
-
+        
         guard let videoURL = URL(string: model.videoURL) else { return }
         let player         = AVPlayer(url: videoURL)
         
@@ -51,6 +53,21 @@ class MainFeedCell: UICollectionViewCell {
         })
         
         player.addObserver(self, forKeyPath: "currentItem.loadedTimeRanges", options: NSKeyValueObservingOptions.new, context: nil)
+    }
+    
+    func stopPlayback() {
+        print("Stop playing")
+        self.videoPlayerView.player?.pause()
+    }
+    
+    func startPlayback() {
+        print("Start playing")
+        self.videoPlayerView.player?.play()
+    }
+    
+    @IBAction func playerBtnTapped(_ sender: Any) {
+        isAlreadyPlaying ? stopPlayback() : startPlayback()
+        isAlreadyPlaying = !isAlreadyPlaying
     }
     
     override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

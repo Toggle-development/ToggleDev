@@ -49,15 +49,25 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVM-z7-q3y">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
+                                                    <connections>
+                                                        <action selector="playerBtnTapped:" destination="PB0-bK-jLo" eventType="touchUpInside" id="Hka-Zo-slF"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="AKx-GK-JvK" firstAttribute="centerY" secondItem="xjS-Qg-SIm" secondAttribute="centerY" id="4iL-vz-ZwP"/>
                                                 <constraint firstItem="c9j-0C-pC6" firstAttribute="top" secondItem="xjS-Qg-SIm" secondAttribute="top" id="CRr-nk-C12"/>
                                                 <constraint firstItem="c9j-0C-pC6" firstAttribute="leading" secondItem="xjS-Qg-SIm" secondAttribute="leading" id="Hyh-oF-BEF"/>
                                                 <constraint firstAttribute="bottom" secondItem="owV-zm-s83" secondAttribute="bottom" id="OBh-oK-mer"/>
+                                                <constraint firstAttribute="bottom" secondItem="fVM-z7-q3y" secondAttribute="bottom" id="U0H-6H-Jsg"/>
+                                                <constraint firstAttribute="trailing" secondItem="fVM-z7-q3y" secondAttribute="trailing" id="U5l-Je-XW3"/>
                                                 <constraint firstAttribute="trailing" secondItem="owV-zm-s83" secondAttribute="trailing" id="Usc-OX-Hnz"/>
                                                 <constraint firstItem="owV-zm-s83" firstAttribute="leading" secondItem="xjS-Qg-SIm" secondAttribute="leading" id="W88-RG-MtD"/>
                                                 <constraint firstAttribute="bottom" secondItem="c9j-0C-pC6" secondAttribute="bottom" id="YUz-wU-MBk"/>
+                                                <constraint firstItem="fVM-z7-q3y" firstAttribute="leading" secondItem="xjS-Qg-SIm" secondAttribute="leading" id="d9z-df-H3a"/>
+                                                <constraint firstItem="fVM-z7-q3y" firstAttribute="top" secondItem="xjS-Qg-SIm" secondAttribute="top" id="fHs-7p-RdY"/>
                                                 <constraint firstItem="AKx-GK-JvK" firstAttribute="centerX" secondItem="xjS-Qg-SIm" secondAttribute="centerX" id="iFG-Lg-tr6"/>
                                                 <constraint firstAttribute="trailing" secondItem="c9j-0C-pC6" secondAttribute="trailing" id="wac-lS-bGx"/>
                                                 <constraint firstItem="owV-zm-s83" firstAttribute="top" secondItem="xjS-Qg-SIm" secondAttribute="top" id="yKM-bN-oic"/>

@@ -21,6 +21,7 @@ class MainFeedVC: UIViewController, UIScrollViewDelegate {
         layout.scrollDirection = .vertical
         collectionView.collectionViewLayout = layout
     }
+  
     
 }
 extension MainFeedVC: UICollectionViewDataSource, UICollectionViewDelegate {
