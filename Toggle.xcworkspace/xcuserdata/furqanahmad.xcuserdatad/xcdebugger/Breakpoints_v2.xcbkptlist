@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "6EA834E5-0877-431B-A32C-1937248B7586"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A749F1E9-8E1B-4E81-A394-0450E460F0AB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../../../private/tmp/msu-target-zEutzlL6/private/tmp/msu-target-zEutzlL6/Users/furqanahmad/Desktop/Work/Toggle/Toggle/ToggleDev/Toggle/View/VideoPlayerView/VideoPlayerScrollView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "scrollViewDidEndDecelerating(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "67978DAC-41C3-4493-81E7-26FFBC10514C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../../../private/tmp/msu-target-zEutzlL6/private/tmp/msu-target-zEutzlL6/Users/furqanahmad/Desktop/Work/Toggle/Toggle/ToggleDev/Toggle/View/VideoPlayerView/VideoPlayerScrollView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "scrollViewDidEndDecelerating(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F6503338-197F-4983-BE86-7BDAA679B529"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../../../private/tmp/msu-target-zEutzlL6/private/tmp/msu-target-zEutzlL6/Users/furqanahmad/Desktop/Work/Toggle/Toggle/ToggleDev/Toggle/View/VideoPlayerView/VideoPlayerScrollView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "scrollViewDidEndDecelerating(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9B1F0165-C914-42C4-BA1C-3F8732391385"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../../../private/tmp/msu-target-zEutzlL6/private/tmp/msu-target-zEutzlL6/Users/furqanahmad/Desktop/Work/Toggle/Toggle/ToggleDev/Toggle/View/VideoPlayerView/VideoPlayerScrollView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "scrollViewDidEndDecelerating(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ED5DC7BF-72AC-4807-9350-C823ACA178B5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../../../private/tmp/msu-target-zEutzlL6/private/tmp/msu-target-zEutzlL6/Users/furqanahmad/Desktop/Work/Toggle/Toggle/ToggleDev/Toggle/View/VideoPlayerView/VideoPlayerScrollView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "updateUIView(_:context:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1E6A13A6-58A3-40CB-9541-0BD8A0E2DC28"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../../../private/tmp/msu-target-zEutzlL6/private/tmp/msu-target-zEutzlL6/Users/furqanahmad/Desktop/Work/Toggle/Toggle/ToggleDev/Toggle/View/VideoPlayerView/VideoPlayerScrollView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "makeUIView(context:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6FC18E2C-3906-4D35-BCE0-D534E7FC0167"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Toggle/View/VideoPlayerView/VideoPlayerScrollView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "scrollViewDidEndDecelerating(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

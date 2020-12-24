@@ -13,8 +13,8 @@ import Amplify
 struct MainFeed: View {
     //observe the posts ovject from PostViewModel to update screen according to data we get.
     @ObservedObject private var postViewModel = PostViewModel()
+    
     let dataManager = DataManager()
-
     
     var body: some View {
         GeometryReader { geometry in
@@ -27,6 +27,7 @@ struct MainFeed: View {
                 }
                 .navigationBarTitle("", displayMode: .inline)
                 .navigationBarItems(leading: AppLogo(),trailing: UploadVideoButton())
+                
             }
             .navigationViewStyle(StackNavigationViewStyle())
         }

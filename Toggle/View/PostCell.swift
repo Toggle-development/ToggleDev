@@ -16,16 +16,18 @@ struct PostCell: View {
     let numberOfLikes: Int
     let postID: Int
     
-    
     var body: some View {
         VStack {
-           
-            
             let asset = AVAsset(url: URL(string: videoURL)!)
             let playerItem = AVPlayerItem(asset: asset)
             let player = AVPlayer(playerItem: playerItem)
+            
+            TopBarOfCell(postOwner: postOwner)
+                .frame( width: UIScreen.main.bounds.width, height: postFrame.size.height / 15)
+                .padding(.top, 5)
+            
             VideoView(previewLength: 60, player: player)
-                .frame(width: UIScreen.main.bounds.width/1.1, height: postFrame.size.height / 1.5)
+                .frame(width: UIScreen.main.bounds.width, height: postFrame.size.height / 1.5)
                 .onAppear() {
                     player.play()
                 }
@@ -33,10 +35,6 @@ struct PostCell: View {
                     player.seek(to: CMTime(seconds: 0, preferredTimescale: CMTimeScale(1)))
                     player.pause()
                 }
-            TopBarOfCell(postOwner: postOwner)
-                .frame( width: UIScreen.main.bounds.width/1.1, height: postFrame.size.height / 15)
-                .padding(.top, 5)
-                     
             
             CaptionsAndComments(caption: caption, postOwner: postOwner, numberOfLikes: numberOfLikes)
 
