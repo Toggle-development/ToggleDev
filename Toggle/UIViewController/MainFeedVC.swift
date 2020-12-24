@@ -23,7 +23,7 @@ class MainFeedVC: UIViewController, UIScrollViewDelegate {
         cameraIV.image = UIImage.init(systemName: "camera.circle.fill")
         
         /// TODO: - Need proper fix for this
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
         
     }
     
