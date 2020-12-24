@@ -34,11 +34,11 @@ class MainFeedCell: UICollectionViewCell {
     @IBOutlet weak var videoPlayerView: VideoPlayerView!
     @IBOutlet weak var thumbnailIV: UIImageView!
     @IBOutlet weak var userIV: UIImageView!
-
+    
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
-
+    
     private var isAlreadyPlaying = true
     
     public func configure(with model: OGPost) {
@@ -46,7 +46,7 @@ class MainFeedCell: UICollectionViewCell {
         likeButton.setImage(UIImage.init(systemName: "heart"), for: .normal)
         commentButton.setImage(UIImage.init(systemName: "message"), for: .normal)
         shareButton.setImage(UIImage.init(systemName: "arrowshape.turn.up.right"), for: .normal)
-
+        
         setupVideo(videoURL: model.videoURL)
     }
     
@@ -55,19 +55,28 @@ class MainFeedCell: UICollectionViewCell {
         loader.startAnimating()
         
         guard let videoURL = URL(string: videoURL) else { return }
-        let player         = AVPlayer(url: videoURL)
         
-        videoPlayerView.playerLayer.frame        = self.frame
-        videoPlayerView.playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        videoPlayerView.playerLayer.player       = player
+        videoPlayerView.player = AVPlayer(url: videoURL)
+        videoPlayerView.playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
+        videoPlayerView.playerLayer.zPosition = -1
+        
+        videoPlayerView.player?.seek(to: CMTime(seconds: 5, preferredTimescale: CMTimeScale(1)))
+        videoPlayerView.player?.play()
         
         /// play video for 60 seconds max, even if video is longer than that
         Timer.scheduledTimer(withTimeInterval: 60, repeats: true, block: { (timer) in
-            player.seek(to: CMTime(seconds: 0, preferredTimescale: CMTimeScale(1)))
+            self.videoPlayerView.player?.seek(to: CMTime(seconds: 0, preferredTimescale: CMTimeScale(1)))
         })
         
-        /// TODO: - This needs to be removed as well
-        player.addObserver(self, forKeyPath: "currentItem.loadedTimeRanges", options: NSKeyValueObservingOptions.new, context: nil)
+        // setting the observer, it will call when video gets ended
+        NotificationCenter.default.addObserver(self, selector:#selector(reStartVideo),name: .AVPlayerItemDidPlayToEndTime, object: videoPlayerView.player?.currentItem)
+        
+        videoPlayerView.player!.addObserver(self, forKeyPath: "currentItem.loadedTimeRanges", options: NSKeyValueObservingOptions.new, context: nil)
+    }
+    
+    @objc func reStartVideo(){
+        videoPlayerView.player?.seek(to: CMTime(seconds: 0, preferredTimescale: CMTimeScale(1)))
+        videoPlayerView.player?.play()
     }
     
     func stopPlayback() {
@@ -89,7 +98,7 @@ class MainFeedCell: UICollectionViewCell {
         if keyPath == "currentItem.loadedTimeRanges" {
             DispatchQueue.main.async {
                 self.loader.stopAnimating()
-                print("playing")
+                print("playing-- > \(self.tag)")
             }
         }
     }
