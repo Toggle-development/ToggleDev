@@ -27,22 +27,28 @@ struct SessionView: View {
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                 }
-            
+               
             NotificationView()
                 .tabItem {
                     Image(systemName: "gamecontroller")
                 }
-            
             AccountView()
                 .tabItem {
                     Image(systemName: "person.circle")
                 }
         }
+        .foregroundColor(.gray)
+        .colorScheme(.dark).contrast(1.5).opacity(0.88)
+        .accentColor(Color("tog"))
+        
+        
     }
+    
+
+    
 }
 
 struct SessionView_Previews: PreviewProvider {
-    @Binding var dummy: Bool
     struct DummyUser: AuthUser {
         let userId: String = "1"
         let username: String = "dummy"
