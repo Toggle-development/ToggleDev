@@ -32,51 +32,55 @@ class MainFeedCell: UICollectionViewCell {
     
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var videoPlayerView: VideoPlayerView!
+    @IBOutlet weak var videoPlayerViewHeight: NSLayoutConstraint!
+    
     @IBOutlet weak var thumbnailIV: UIImageView!
     @IBOutlet weak var userIV: UIImageView!
-    
+    @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
     
     private var isAlreadyPlaying = true
     
-    public func configure(with model: OGPost) {
-        userIV.image = UIImage.init(systemName: "person.circle.fill")
-        likeButton.setImage(UIImage.init(systemName: "heart"), for: .normal)
-        commentButton.setImage(UIImage.init(systemName: "message"), for: .normal)
-        shareButton.setImage(UIImage.init(systemName: "arrowshape.turn.up.right"), for: .normal)
-        
-        setupVideo(videoURL: model.videoURL)
+    var model : OGPost?{
+        didSet{
+            userIV.image = UIImage.init(systemName: "person.circle.fill")
+            likeButton.setImage(UIImage.init(systemName: "heart"), for: .normal)
+            commentButton.setImage(UIImage.init(systemName: "message"), for: .normal)
+            shareButton.setImage(UIImage.init(systemName: "arrowshape.turn.up.right"), for: .normal)
+            userNameLbl.text = model?.postOwner
+            videoPlayerViewHeight.constant = self.frame.width / (1.777)
+        }
+    }
+    
+    func playVideo(){
+        self.setupVideo(videoURL: model?.videoURL ?? "")
     }
     
     private func setupVideo(videoURL: String) {
         
-        loader.startAnimating()
+        self.loader.startAnimating()
+        self.thumbnailIV.isHidden = true
         
         guard let videoURL = URL(string: videoURL) else { return }
         
         videoPlayerView.player = AVPlayer(url: videoURL)
-        videoPlayerView.playerLayer.videoGravity = AVLayerVideoGravity.resizeAspect
+        
+        // creating new player here
+        videoPlayerView.playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         videoPlayerView.playerLayer.zPosition = -1
+        videoPlayerView.playerLayer.backgroundColor = UIColor.clear.cgColor
         
         videoPlayerView.player?.seek(to: CMTime(seconds: 5, preferredTimescale: CMTimeScale(1)))
         videoPlayerView.player?.play()
-        
-        /// play video for 60 seconds max, even if video is longer than that
-        Timer.scheduledTimer(withTimeInterval: 60, repeats: true, block: { (timer) in
-            self.videoPlayerView.player?.seek(to: CMTime(seconds: 0, preferredTimescale: CMTimeScale(1)))
-        })
+        videoPlayerView.playerLayer.backgroundColor = UIColor.clear.cgColor
+        videoPlayerView.backgroundColor = UIColor.clear
         
         // setting the observer, it will call when video gets ended
-        NotificationCenter.default.addObserver(self, selector:#selector(reStartVideo),name: .AVPlayerItemDidPlayToEndTime, object: videoPlayerView.player?.currentItem)
+        NotificationCenter.default.addObserver(self, selector:#selector(resStartVideo),name: .AVPlayerItemDidPlayToEndTime, object: videoPlayerView.player?.currentItem)
         
-        videoPlayerView.player!.addObserver(self, forKeyPath: "currentItem.loadedTimeRanges", options: NSKeyValueObservingOptions.new, context: nil)
-    }
-    
-    @objc func reStartVideo(){
-        videoPlayerView.player?.seek(to: CMTime(seconds: 0, preferredTimescale: CMTimeScale(1)))
-        videoPlayerView.player?.play()
+        videoPlayerView.player?.addObserver(self, forKeyPath: "currentItem.loadedTimeRanges", options: NSKeyValueObservingOptions.new, context: nil)
     }
     
     func stopPlayback() {
@@ -89,6 +93,11 @@ class MainFeedCell: UICollectionViewCell {
         self.videoPlayerView.player?.play()
     }
     
+    @objc func resStartVideo(){
+        videoPlayerView.player?.seek(to: CMTime(seconds: 5, preferredTimescale: CMTimeScale(1)))
+        videoPlayerView.player?.play()
+    }
+    
     @IBAction func playerBtnTapped(_ sender: Any) {
         isAlreadyPlaying ? stopPlayback() : startPlayback()
         isAlreadyPlaying = !isAlreadyPlaying
@@ -98,8 +107,21 @@ class MainFeedCell: UICollectionViewCell {
         if keyPath == "currentItem.loadedTimeRanges" {
             DispatchQueue.main.async {
                 self.loader.stopAnimating()
-                print("playing-- > \(self.tag)")
+                print("playing --> ", self.model?.postOwner ?? "")
             }
         }
+    }
+    
+    func pauseVisibleVideos(){
+        if videoPlayerView.player != nil && videoPlayerView.player?.rate != 0{
+            
+            videoPlayerView.player?.removeObserver(self, forKeyPath: "currentItem.loadedTimeRanges")
+            
+            NotificationCenter.default.removeObserver(self, name: .AVPlayerItemDidPlayToEndTime, object: videoPlayerView.player?.currentItem)
+            
+            videoPlayerView.player?.pause()
+        }
+        
+        self.thumbnailIV.isHidden = false
     }
 }

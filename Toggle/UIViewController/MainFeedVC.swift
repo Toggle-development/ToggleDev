@@ -20,68 +20,83 @@ class MainFeedVC: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let layout = AnimatedCollectionViewLayout()
-        layout.animator = ParallaxAttributesAnimator()
-        layout.scrollDirection = .vertical
-        
-        collectionView.collectionViewLayout = layout
-        
         cameraIV.image = UIImage.init(systemName: "camera.circle.fill")
+        
+        /// TODO: - Need proper fix for this
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
+        
     }
-  
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        playVideo(visibleCell: collectionView.visibleCells.first ?? UICollectionViewCell())
+        
+        /// for the first time load
+        let visibleCellsInFrame = self.collectionView.indexPathsForVisibleItems
+        playVideoOf(visibleCell: visibleCellsInFrame)
+        
     }
-    
-    func playVideo(visibleCell:UICollectionViewCell){
-        guard let videoCell = (visibleCell as? MainFeedCell) else { return }
-        videoCell.videoPlayerView.player?.play()
-    }
-    
 }
-extension MainFeedVC: UICollectionViewDataSource, UICollectionViewDelegate {
+
+//MARK: - Video Player Helping methods
+extension MainFeedVC {
+    
+    fileprivate func playVideoOf(visibleCell: [IndexPath]) {
+        
+        let completeVisibleCellRow = getRowOfComplete(visibleCells: visibleCell) ?? -1
+        print("visibleCellRow ---> ", completeVisibleCellRow)
+        
+        for (_,indexPath) in visibleCell.enumerated() {
+            
+            guard let videoCell = collectionView.cellForItem(at: indexPath) as? MainFeedCell else { return }
+            
+            if indexPath.row == completeVisibleCellRow {
+                videoCell.playVideo()
+            }else{
+                videoCell.pauseVisibleVideos()
+            }
+        }
+    }
+    
+    fileprivate func getRowOfComplete(visibleCells: [IndexPath]) -> Int? {
+        for (_,indexPath) in visibleCells.enumerated() {
+            if let cellRect = collectionView.layoutAttributesForItem(at: indexPath)?.frame {
+                if collectionView.bounds.contains(cellRect) {
+                    return indexPath.row
+                }
+            }
+        }
+        return nil
+    }
+}
+
+//MARK: - UICollectionViewDataSource
+extension MainFeedVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return postArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainFeedCell", for: indexPath) as! MainFeedCell
-        cell.tag = indexPath.row
-        cell.configure(with: postArray[indexPath.row])
+        cell.model = postArray[indexPath.row]
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        guard let videoCell = (cell as? MainFeedCell) else { return };
-//        videoCell.videoPlayerView.player?.play()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath){
-        guard let videoCell = (cell as? MainFeedCell) else { return }
-        videoCell.videoPlayerView.player?.removeObserver(videoCell, forKeyPath: "currentItem.loadedTimeRanges")
-        NotificationCenter.default.removeObserver(videoCell, name: .AVPlayerItemDidPlayToEndTime, object: videoCell.videoPlayerView.player?.currentItem)
-        videoCell.videoPlayerView.player?.pause()
-//        videoCell.videoPlayerView.player = nil
+        /// passing all visible cells here
+        playVideoOf(visibleCell: self.collectionView.indexPathsForVisibleItems)
     }
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
 extension MainFeedVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = collectionView.frame.height
-        return CGSize(width: UIScreen.main.bounds.width, height: height)
+        let width = UIScreen.main.bounds.width
+        let height = (50 + ( width / 1.777) +  150)
+        return CGSize(width: width, height: height)
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .zero
-    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat { return 0 }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat { return 0 }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets { return .zero }
 }
 
