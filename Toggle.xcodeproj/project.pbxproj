@@ -35,6 +35,7 @@
 		46DC977B2559477F004CD262 /* Post+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC97782559477F004CD262 /* Post+Schema.swift */; };
 		46DC977C2559477F004CD262 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC97792559477F004CD262 /* Post.swift */; };
 		46DE163B2559501C00BA6873 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE163A2559501C00BA6873 /* ImagePicker.swift */; };
+		50BAD3032595FA2B008C3AC1 /* GlobalMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BAD3022595FA2B008C3AC1 /* GlobalMethod.swift */; };
 		6249E919254A456E00DF3787 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 6249E917254A456E00DF3787 /* awsconfiguration.json */; };
 		6249E91A254A456E00DF3787 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 6249E918254A456E00DF3787 /* amplifyconfiguration.json */; };
 		8FCB73AB10557EB1D921266B /* Pods_Toggle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C126DC19DFDA03D78323360 /* Pods_Toggle.framework */; };
@@ -95,6 +96,7 @@
 		46DC97782559477F004CD262 /* Post+Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Post+Schema.swift"; path = "../../amplify/generated/models/Post+Schema.swift"; sourceTree = "<group>"; };
 		46DC97792559477F004CD262 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		46DE163A2559501C00BA6873 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		50BAD3022595FA2B008C3AC1 /* GlobalMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalMethod.swift; sourceTree = "<group>"; };
 		6249E917254A456E00DF3787 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = SOURCE_ROOT; };
 		6249E918254A456E00DF3787 /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = SOURCE_ROOT; };
 		8C126DC19DFDA03D78323360 /* Pods_Toggle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Toggle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,6 +227,7 @@
 		46C0E107254932220020BEDD /* Toggle */ = {
 			isa = PBXGroup;
 			children = (
+				50BAD3012595FA0D008C3AC1 /* Helper */,
 				E9805301258D6C7C00EF80CC /* UIViewController */,
 				6249E918254A456E00DF3787 /* amplifyconfiguration.json */,
 				6249E917254A456E00DF3787 /* awsconfiguration.json */,
@@ -271,6 +274,14 @@
 				8C126DC19DFDA03D78323360 /* Pods_Toggle.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		50BAD3012595FA0D008C3AC1 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				50BAD3022595FA2B008C3AC1 /* GlobalMethod.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		E9805301258D6C7C00EF80CC /* UIViewController */ = {
@@ -465,6 +476,7 @@
 				46DC977B2559477F004CD262 /* Post+Schema.swift in Sources */,
 				46C0E10B254932220020BEDD /* LoginView.swift in Sources */,
 				015F13572557AB830022EB26 /* NotificationView.swift in Sources */,
+				50BAD3032595FA2B008C3AC1 /* GlobalMethod.swift in Sources */,
 				0158A412254C041D00B8C5FC /* currentSessionInfo.swift in Sources */,
 				018F52AD2556D95A0050ECA0 /* AccountView.swift in Sources */,
 				01746B2D2555496000F96474 /* PlayerView.swift in Sources */,
@@ -642,6 +654,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"Toggle/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
@@ -666,6 +679,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"Toggle/Preview Content\"";
 				DEVELOPMENT_TEAM = "";

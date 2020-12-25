@@ -8,6 +8,7 @@
 import UIKit
 import AVFoundation
 
+
 class VideoPlayerView: UIView {
     
     override static var layerClass: AnyClass {
@@ -33,9 +34,9 @@ class MainFeedCell: UICollectionViewCell {
     @IBOutlet weak var loader: UIActivityIndicatorView!
     @IBOutlet weak var videoPlayerView: VideoPlayerView!
     @IBOutlet weak var videoPlayerViewHeight: NSLayoutConstraint!
-    
     @IBOutlet weak var thumbnailIV: UIImageView!
-    @IBOutlet weak var userIV: UIImageView!
+    @IBOutlet weak var postCommentAndLikesLbl: UILabel!
+    @IBOutlet weak var postTextLbl: UILabel!
     @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var commentButton: UIButton!
@@ -45,17 +46,27 @@ class MainFeedCell: UICollectionViewCell {
     
     var model : OGPost?{
         didSet{
-            userIV.image = UIImage.init(systemName: "person.circle.fill")
-            likeButton.setImage(UIImage.init(systemName: "heart"), for: .normal)
-            commentButton.setImage(UIImage.init(systemName: "message"), for: .normal)
+            likeButton.setImage(UIImage.init(systemName: "hand.thumbsup.fill"), for: .normal)
+            commentButton.setImage(UIImage.init(systemName: "message.fill"), for: .normal)
             shareButton.setImage(UIImage.init(systemName: "arrowshape.turn.up.right"), for: .normal)
-            userNameLbl.text = model?.postOwner
+            userNameLbl.text = "@ \(model?.postOwner ?? "N/A")"
+            postCommentAndLikesLbl.text = "\(model?.numberOfLikes ?? 0) Likes - 2K Comments"
             videoPlayerViewHeight.constant = self.frame.width / (1.777)
+            
+            if let videoURL = URL(string: model?.videoURL ?? "") {
+                
+                getThumbnailImageFromVideoUrl(url: videoURL) { (thumbImage) in
+                    self.thumbnailIV.image = thumbImage ?? UIImage(named: "thumbnail")!
+                }
+            }
+
         }
     }
     
     func playVideo(){
-        self.setupVideo(videoURL: model?.videoURL ?? "")
+        if videoPlayerView.player?.rate != 1{ /// if video is already playing to load his again
+                self.setupVideo(videoURL: self.model?.videoURL ?? "")
+        }
     }
     
     private func setupVideo(videoURL: String) {
@@ -113,7 +124,7 @@ class MainFeedCell: UICollectionViewCell {
     }
     
     func pauseVisibleVideos(){
-        if videoPlayerView.player != nil && videoPlayerView.player?.rate != 0{
+        if videoPlayerView.player != nil && videoPlayerView.player?.rate != 0 && videoPlayerView.player?.currentItem != nil{
             
             videoPlayerView.player?.removeObserver(self, forKeyPath: "currentItem.loadedTimeRanges")
             
@@ -121,7 +132,7 @@ class MainFeedCell: UICollectionViewCell {
             
             videoPlayerView.player?.pause()
         }
-        
+        self.loader.stopAnimating()
         self.thumbnailIV.isHidden = false
     }
 }

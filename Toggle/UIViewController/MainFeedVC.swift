@@ -14,7 +14,8 @@ class MainFeedVC: UIViewController, UIScrollViewDelegate {
     //MARK: - IBOutlets
     @IBOutlet weak var cameraIV: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
+
     var postArray = [OGPost]()
     
     override func viewDidLoad() {
@@ -22,14 +23,17 @@ class MainFeedVC: UIViewController, UIScrollViewDelegate {
         
         cameraIV.image = UIImage.init(systemName: "camera.circle.fill")
         
-        /// TODO: - Need proper fix for this
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
-        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        ///TabBar frame Height
+        let tabBarHeight = self.tabBarController?.tabBar.frame.height ?? 0.0
+        
+        /// FeedList tabBar Bottom Margin
+        collectionViewHeight.constant = tabBarHeight
+
         /// for the first time load
         let visibleCellsInFrame = self.collectionView.indexPathsForVisibleItems
         playVideoOf(visibleCell: visibleCellsInFrame)
@@ -49,7 +53,7 @@ extension MainFeedVC {
             
             guard let videoCell = collectionView.cellForItem(at: indexPath) as? MainFeedCell else { return }
             
-            if indexPath.row == completeVisibleCellRow {
+            if indexPath.section == completeVisibleCellRow {
                 videoCell.playVideo()
             }else{
                 videoCell.pauseVisibleVideos()
@@ -61,7 +65,7 @@ extension MainFeedVC {
         for (_,indexPath) in visibleCells.enumerated() {
             if let cellRect = collectionView.layoutAttributesForItem(at: indexPath)?.frame {
                 if collectionView.bounds.contains(cellRect) {
-                    return indexPath.row
+                    return indexPath.section
                 }
             }
         }
@@ -72,31 +76,42 @@ extension MainFeedVC {
 //MARK: - UICollectionViewDataSource
 extension MainFeedVC: UICollectionViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return postArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainFeedCell", for: indexPath) as! MainFeedCell
-        cell.model = postArray[indexPath.row]
+        cell.model = postArray[indexPath.section]
+        cell.layer.cornerRadius = 12
+
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        /// passing all visible cells here
-        playVideoOf(visibleCell: self.collectionView.indexPathsForVisibleItems)
-    }
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
 extension MainFeedVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = UIScreen.main.bounds.width
-        let height = (50 + ( width / 1.777) +  150)
+        let width = collectionView.frame.width - 8
+        let height =  ( (width / 1.777) +  223.5)
         return CGSize(width: width, height: height)
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat { return 0 }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat { return 0 }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets { return .zero }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets { return .init(top: 4, left: 0, bottom: 4, right: 0) }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
+            /// passing all visible cells here
+            self.playVideoOf(visibleCell: self.collectionView.indexPathsForVisibleItems)
+            timer.invalidate()
+        }
+    }
 }
 
