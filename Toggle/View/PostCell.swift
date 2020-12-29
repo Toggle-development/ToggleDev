@@ -10,8 +10,8 @@ import AVKit
 
 struct PostCell: View {
     let postOwner: String
-    let videoURL: String
     let caption: String
+    let videoURL: URL
     let postFrame: GeometryProxy
     
     var body: some View {
@@ -20,9 +20,7 @@ struct PostCell: View {
             TopBarOfCell(postOwner: postOwner)
                 .frame(width: UIScreen.main.bounds.width, height: postFrame.size.height / 15)
                 .padding(.top, 5)
-            
-            let player = AVPlayer(url: (URL(string: videoURL))!) // need to change this can't force wrap URL
-            //Text("\(postFrame.frame(in: .global).maxY)") ( can get min and max y of full screen from this (first and last post)
+            let player = AVPlayer(url: videoURL) // need to change this can't force wrap URL
             // can get the height of the video by doing postFrame.size.height / 1.5
             VideoView(previewLength: 60, player: player)
                 .frame(width: UIScreen.main.bounds.width, height: postFrame.size.height / 1.5)
@@ -46,7 +44,6 @@ struct PostCell: View {
 
 struct TopBarOfCell: View {
     let postOwner: String
-    
     var body: some View {
         HStack {
             GeometryReader { geo in
@@ -119,6 +116,6 @@ struct CaptionsAndComments: View {
 
 struct PostCell_Previews: PreviewProvider {
     static var previews: some View {
-        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+        Text("Hello, World!")
     }
 }

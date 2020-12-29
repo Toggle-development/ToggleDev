@@ -7,23 +7,24 @@
 
 import SwiftUI
 import AVKit
+import Amplify
 
 struct MainFeed: View {
     //observe the posts object from PostViewModel to update screen according to data we get.
     @ObservedObject private var postViewModel = PostViewModel()
+    
     let dataManager = DataManager()
-
-    init() {
-        dataManager.createTestPost()
-    }
+    @State var PostsRead: [String: Bool] = [String: Bool]()
+    
     var body: some View {
         
         GeometryReader { geometry in
             NavigationView {
                 List {
                     // for each post in post in posts create a post cell
-                    ForEach(postViewModel.posts, id: \.id) {post in
-                        PostCell(postOwner: post.postOwner, videoURL: post.videoURL, caption: post.caption, postFrame: geometry)
+                    ForEach(postViewModel.posts, id: \.id) { post in
+                        let url = URL(string: "https://toggle-storage172749-dev.s3-us-west-2.amazonaws.com/public/\(post.id).mp4")
+                        PostCell(postOwner: post.postOwner, caption: post.caption, videoURL: url!, postFrame: geometry)
                     }
                 }
                 .navigationBarTitle("", displayMode: .inline)
@@ -58,7 +59,8 @@ struct NavigationConfigurator: UIViewControllerRepresentable {
 }
 
 struct UploadVideoButton: View {
-    @State var videoURL: NSURL?
+    // this videoURL should eventually hold the actual video url string.
+    @State var videoURL: NSURL? = NSURL(string: "")
     var body: some View {
         NavigationLink(destination: ImagePicker(videoURL: $videoURL)) {
             Image(systemName:"camera.circle.fill")

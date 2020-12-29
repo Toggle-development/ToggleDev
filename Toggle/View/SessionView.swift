@@ -51,20 +51,3 @@ struct SessionView_Previews: PreviewProvider {
         SessionView(user: DummyUser()).environmentObject(SessionManager())
     }
 }
-
-//MARK: - Sign out might need later
-/*Button(action: {
- sessionManager.signOutLocally()
- }) {
- Text("Sign Out")
- }
- .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("signout-locally-error")), perform: { (errorMsg) in
- if let userInfo = errorMsg.userInfo, let errMsg = userInfo["errorMessage"] {
- self.presentError.toggle()
- if let errString = errMsg as? String {
- self.errorMessage = errString
- }
- }
- }).alert(isPresented: $presentError) {
- Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
- }*/

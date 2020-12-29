@@ -45,12 +45,11 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imagePicker.presentationMode.wrappedValue.dismiss()
-        guard let videoURL = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerReferenceURL")] as? NSURL else {return}
-        imagePicker.videoURL = videoURL
         let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         if let url = info[.mediaURL] as? URL {
             do {
                 let docDirURL: URL = documentsDirectoryURL.appendingPathComponent("test.mov")
+                
                 if FileManager.default.fileExists(atPath: docDirURL.path) {
                     do {
                         try FileManager.default.removeItem(at: docDirURL)
@@ -62,13 +61,10 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
                 try FileManager.default.moveItem(at: url, to: docDirURL)
                 print("Movie saved in application store.")
                 let dataManager = DataManager()
-                dataManager.uploadFile(fileKey: "test.mov")
-                
-                // this is a line for testing purposes, this function should really be used somewhere else.
-                dataManager.getS3URL(fileKey: "test.mov") { url in
-                    // successfully got the URL.
-                    print("URL: \(url)")
+                movToMp4(at: docDirURL) { (mp4Url, _) in
+                    dataManager.uploadFile(fileKey: mp4Url?.lastPathComponent ?? "test.mp4")
                 }
+                
             } catch {
                 print("Error: ImagePickerController")
                 print(error)

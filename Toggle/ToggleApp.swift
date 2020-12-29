@@ -17,9 +17,12 @@ struct ToggleApp: App {
     init() {
         configureAmplify()
         sessionManager.getCurrentAuthUser()
+        //let dataManager = DataManager()
+        //dataManager.clearLocalData()
     }
     
     var body: some Scene {
+        
         WindowGroup {
             RootView().environmentObject(sessionManager)
         }

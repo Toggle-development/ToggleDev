@@ -30,14 +30,26 @@
 		46C0E110254932230020BEDD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46C0E10F254932230020BEDD /* Preview Assets.xcassets */; };
 		46C0E11B254932230020BEDD /* ToggleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0E11A254932230020BEDD /* ToggleTests.swift */; };
 		46C0E126254932230020BEDD /* ToggleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C0E125254932230020BEDD /* ToggleUITests.swift */; };
-		46DC97612559460F004CD262 /* OGPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC97602559460F004CD262 /* OGPost.swift */; };
 		46DC977A2559477F004CD262 /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC97772559477F004CD262 /* AmplifyModels.swift */; };
 		46DC977B2559477F004CD262 /* Post+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC97782559477F004CD262 /* Post+Schema.swift */; };
 		46DC977C2559477F004CD262 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC97792559477F004CD262 /* Post.swift */; };
 		46DE163B2559501C00BA6873 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE163A2559501C00BA6873 /* ImagePicker.swift */; };
+		6202F086259855260077E376 /* MovToMp4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6202F085259855260077E376 /* MovToMp4.swift */; };
+		6202F08E25986AD40077E376 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6202F08D25986AD40077E376 /* APIManager.swift */; };
+		6202F096259948220077E376 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6202F095259948220077E376 /* SearchViewModel.swift */; };
 		6249E919254A456E00DF3787 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 6249E917254A456E00DF3787 /* awsconfiguration.json */; };
 		6249E91A254A456E00DF3787 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 6249E918254A456E00DF3787 /* amplifyconfiguration.json */; };
+		62EC3083258FF6EF000EADB8 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EC3082258FF6EF000EADB8 /* Search.swift */; };
+		62EC3088258FF877000EADB8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EC3087258FF877000EADB8 /* User.swift */; };
 		8FCB73AB10557EB1D921266B /* Pods_Toggle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C126DC19DFDA03D78323360 /* Pods_Toggle.framework */; };
+		0E6BBC0115AE401AA68C9C44 /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429DBD543A074030B3798280 /* AmplifyModels.swift */; };
+		DA24DE9627444D829D6566AB /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536C6AFD5DD4475AB15B6F53 /* Comment.swift */; };
+		03E420290DA54D69ACA6AACC /* Comment+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF7A54A50A6432F94918DF8 /* Comment+Schema.swift */; };
+		9CA426CC176A4575950ABBCB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A727F5C62549F1A3AE3AC1 /* Post.swift */; };
+		84BEC68C243241A48F7A61EF /* Post+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8518D50DF9450A8346DC1D /* Post+Schema.swift */; };
+		FF9EDC9589FE4D1BBBBBCDF0 /* PostStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = E182F7AF7B7E45CC9DEC09F5 /* PostStatus.swift */; };
+		159E826CF8EE413499CD5929 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9E15CFE0F4967B8D841A2 /* User.swift */; };
+		7FFE87C8776E49219FC07A8A /* User+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D7284256804EDA9564749C /* User+Schema.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,16 +99,31 @@
 		46C0E121254932230020BEDD /* ToggleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToggleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		46C0E125254932230020BEDD /* ToggleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleUITests.swift; sourceTree = "<group>"; };
 		46C0E127254932230020BEDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		46DC97602559460F004CD262 /* OGPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OGPost.swift; sourceTree = "<group>"; };
 		46DC97772559477F004CD262 /* AmplifyModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AmplifyModels.swift; path = ../../amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
 		46DC97782559477F004CD262 /* Post+Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Post+Schema.swift"; path = "../../amplify/generated/models/Post+Schema.swift"; sourceTree = "<group>"; };
 		46DC97792559477F004CD262 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		46DE163A2559501C00BA6873 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		6202F085259855260077E376 /* MovToMp4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovToMp4.swift; sourceTree = "<group>"; };
+		6202F08D25986AD40077E376 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		6202F095259948220077E376 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		6249E917254A456E00DF3787 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = SOURCE_ROOT; };
 		6249E918254A456E00DF3787 /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = SOURCE_ROOT; };
+		62EC3082258FF6EF000EADB8 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		62EC3087258FF877000EADB8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		62EC309225900AC5000EADB8 /* Toggle.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Toggle.entitlements; sourceTree = "<group>"; };
 		8C126DC19DFDA03D78323360 /* Pods_Toggle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Toggle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBC89CA85A289F7C6B6B9E75 /* Pods-Toggle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toggle.debug.xcconfig"; path = "Target Support Files/Pods-Toggle/Pods-Toggle.debug.xcconfig"; sourceTree = "<group>"; };
 		F0965E39D03C9D589CB195D7 /* Pods-Toggle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toggle.release.xcconfig"; path = "Target Support Files/Pods-Toggle/Pods-Toggle.release.xcconfig"; sourceTree = "<group>"; };
+		429DBD543A074030B3798280 /* AmplifyModels.swift */ = {isa = PBXFileReference; name = "AmplifyModels.swift"; path = "amplify/generated/models/AmplifyModels.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		536C6AFD5DD4475AB15B6F53 /* Comment.swift */ = {isa = PBXFileReference; name = "Comment.swift"; path = "amplify/generated/models/Comment.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		0DF7A54A50A6432F94918DF8 /* Comment+Schema.swift */ = {isa = PBXFileReference; name = "Comment+Schema.swift"; path = "amplify/generated/models/Comment+Schema.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		D2A727F5C62549F1A3AE3AC1 /* Post.swift */ = {isa = PBXFileReference; name = "Post.swift"; path = "amplify/generated/models/Post.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		8E8518D50DF9450A8346DC1D /* Post+Schema.swift */ = {isa = PBXFileReference; name = "Post+Schema.swift"; path = "amplify/generated/models/Post+Schema.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		E182F7AF7B7E45CC9DEC09F5 /* PostStatus.swift */ = {isa = PBXFileReference; name = "PostStatus.swift"; path = "amplify/generated/models/PostStatus.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		80C9E15CFE0F4967B8D841A2 /* User.swift */ = {isa = PBXFileReference; name = "User.swift"; path = "amplify/generated/models/User.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		20D7284256804EDA9564749C /* User+Schema.swift */ = {isa = PBXFileReference; name = "User+Schema.swift"; path = "amplify/generated/models/User+Schema.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		126119A58AF6409E96AB8061 /* amplifytools.xcconfig */ = {isa = PBXFileReference; name = "amplifytools.xcconfig"; path = "amplifytools.xcconfig"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.xcconfig; explicitFileType = undefined; includeInIndex = 0; };
+		AE2602E3C2E548D0A5652C65 /* schema.graphql */ = {isa = PBXFileReference; name = "schema.graphql"; path = "amplify/backend/api/toggle/schema.graphql"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,7 +178,6 @@
 				46DC97782559477F004CD262 /* Post+Schema.swift */,
 				46DC97772559477F004CD262 /* AmplifyModels.swift */,
 				46DC97792559477F004CD262 /* Post.swift */,
-				46DC97602559460F004CD262 /* OGPost.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -159,9 +185,10 @@
 		0158A407254C02EC00B8C5FC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				019AAF2325679A98001D0FA3 /* AWSAPI */,
+				62EC3079258FF269000EADB8 /* API */,
 				0158A408254C034600B8C5FC /* Authentication */,
 				018F528A2556AC620050ECA0 /* PostViewModel.swift */,
+				6202F095259948220077E376 /* SearchViewModel.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -177,14 +204,6 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
-		019AAF2325679A98001D0FA3 /* AWSAPI */ = {
-			isa = PBXGroup;
-			children = (
-				019AAF2425679AB2001D0FA3 /* DataManager.swift */,
-			);
-			path = AWSAPI;
-			sourceTree = "<group>";
-		};
 		0BEA6BDAF0BF3CCFB93BCFF7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +216,8 @@
 		46C0E0FC254932220020BEDD = {
 			isa = PBXGroup;
 			children = (
+				CB4B83D7E30741319B8EFA82 /* AmplifyConfig */,
+				08987CA31FB148D2A0953D9D /* AmplifyModels */,
 				46C0E107254932220020BEDD /* Toggle */,
 				46C0E119254932230020BEDD /* ToggleTests */,
 				46C0E124254932230020BEDD /* ToggleUITests */,
@@ -219,6 +240,7 @@
 		46C0E107254932220020BEDD /* Toggle */ = {
 			isa = PBXGroup;
 			children = (
+				62EC309225900AC5000EADB8 /* Toggle.entitlements */,
 				6249E918254A456E00DF3787 /* amplifyconfiguration.json */,
 				6249E917254A456E00DF3787 /* awsconfiguration.json */,
 				46C0E108254932220020BEDD /* ToggleApp.swift */,
@@ -264,6 +286,52 @@
 				8C126DC19DFDA03D78323360 /* Pods_Toggle.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		62EC3079258FF269000EADB8 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				019AAF2425679AB2001D0FA3 /* DataManager.swift */,
+				6202F08D25986AD40077E376 /* APIManager.swift */,
+				6202F085259855260077E376 /* MovToMp4.swift */,
+				62EC3082258FF6EF000EADB8 /* Search.swift */,
+				62EC3087258FF877000EADB8 /* User.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		08987CA31FB148D2A0953D9D /* AmplifyModels */ = {
+			isa = PBXGroup;
+			children = (
+				429DBD543A074030B3798280 /* AmplifyModels.swift */,
+				536C6AFD5DD4475AB15B6F53 /* Comment.swift */,
+				0DF7A54A50A6432F94918DF8 /* Comment+Schema.swift */,
+				D2A727F5C62549F1A3AE3AC1 /* Post.swift */,
+				8E8518D50DF9450A8346DC1D /* Post+Schema.swift */,
+				E182F7AF7B7E45CC9DEC09F5 /* PostStatus.swift */,
+				80C9E15CFE0F4967B8D841A2 /* User.swift */,
+				20D7284256804EDA9564749C /* User+Schema.swift */,
+			);
+			name = AmplifyModels;
+			path = .;
+			sourceTree = "<group>";
+		};
+		CB4B83D7E30741319B8EFA82 /* AmplifyConfig */ = {
+			isa = PBXGroup;
+			children = (
+				126119A58AF6409E96AB8061 /* amplifytools.xcconfig */,
+				AE2602E3C2E548D0A5652C65 /* schema.graphql */,
+			);
+			name = AmplifyConfig;
+			path = .;
+			sourceTree = "<group>";
+		};
+		83AE127AE91B4A8A8D993320 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			path = undefined;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,6 +509,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62EC3088258FF877000EADB8 /* User.swift in Sources */,
 				01992C84254E8DB800D861D1 /* ConfirmationView.swift in Sources */,
 				019AAF2525679AB2001D0FA3 /* DataManager.swift in Sources */,
 				018F52A82556D9400050ECA0 /* SearchView.swift in Sources */,
@@ -457,14 +526,25 @@
 				46DC977C2559477F004CD262 /* Post.swift in Sources */,
 				010FF5F925576581002A5242 /* DiscoverView.swift in Sources */,
 				46DC977A2559477F004CD262 /* AmplifyModels.swift in Sources */,
-				46DC97612559460F004CD262 /* OGPost.swift in Sources */,
+				6202F096259948220077E376 /* SearchViewModel.swift in Sources */,
 				0158A421254C0C2100B8C5FC /* PasswordManagement.swift in Sources */,
 				46C0E109254932220020BEDD /* ToggleApp.swift in Sources */,
+				6202F08E25986AD40077E376 /* APIManager.swift in Sources */,
+				6202F086259855260077E376 /* MovToMp4.swift in Sources */,
 				01992C89254E8DE300D861D1 /* SessionView.swift in Sources */,
 				0158A417254C068B00B8C5FC /* listenToSessionUpdates.swift in Sources */,
 				46DE163B2559501C00BA6873 /* ImagePicker.swift in Sources */,
+				62EC3083258FF6EF000EADB8 /* Search.swift in Sources */,
 				01746B282555140500F96474 /* MainFeed.swift in Sources */,
 				01992C7C254E8B1500D861D1 /* SessionManager.swift in Sources */,
+				0E6BBC0115AE401AA68C9C44 /* AmplifyModels.swift in Sources */,
+				DA24DE9627444D829D6566AB /* Comment.swift in Sources */,
+				03E420290DA54D69ACA6AACC /* Comment+Schema.swift in Sources */,
+				9CA426CC176A4575950ABBCB /* Post.swift in Sources */,
+				84BEC68C243241A48F7A61EF /* Post+Schema.swift in Sources */,
+				FF9EDC9589FE4D1BBBBBCDF0 /* PostStatus.swift in Sources */,
+				159E826CF8EE413499CD5929 /* User.swift in Sources */,
+				7FFE87C8776E49219FC07A8A /* User+Schema.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,9 +702,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Toggle/Toggle.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Toggle/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = W8534W66Y7;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Toggle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -645,9 +726,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Toggle/Toggle.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Toggle/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = W8534W66Y7;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Toggle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

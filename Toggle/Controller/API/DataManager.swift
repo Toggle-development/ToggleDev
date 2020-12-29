@@ -13,28 +13,23 @@ class DataManager {
     
     /*
      Get a list of all the posts in the database.
+     completionHandler:@escaping([Post]) ->[Post]
      */
-    func queryPosts() {
-        print("Query all Posts")
+    func queryPosts(completion: ([Post]) -> ()) {
         Amplify.DataStore.query(Post.self) { result in
             switch(result) {
             case .success(let posts):
-                for post in posts {
-                    print("==== Post ====")
-                    print("Title: \(post.caption)")
-                    print("Poster: \(post.postOwner)")
-                }
+                print("Successfully queried \(posts.count) posts in Datastore.")
+                completion(posts)
             case .failure(let error):
                 print("Could not query DataStore: \(error)")
             }
-            print("Queried all Posts")
         }
     }
     
-    func createTestPost() {
-        let testPost = Post(postOwner: "James", caption: "Wow this is epic.", numberOfLikes: 999, videoUrl: "test.mov")
-        self.uploadFile(fileKey: "test.mov")
-        self.createPost(post: testPost)
+    func createPost(postOwner: String, caption: String, numberOfLikes: Int ) {
+        let post: Post = Post(postOwner: postOwner, caption: caption, numberOfLikes: numberOfLikes)
+        createPost(post: post)
     }
     
     func createPost(post: Post) {
@@ -43,7 +38,7 @@ class DataManager {
             case .success(let result):
                 switch result {
                 case .success(let post):
-                    print("Successfully created the post: \(post)")
+                    print("Successfully created post: \(post)")
                 case .failure(let graphQLError):
                     print("Failed to create graphql \(graphQLError)")
                 }
@@ -54,15 +49,12 @@ class DataManager {
     }
     
     /*
-     Upload the given filename key. Assumes the file is in the document root of the application.
-     See FileManager.default.urls(for: .documentDirecotyr, in: .userDomainMask) line.
+        Upload the given filename key. Assumes the file is in the document root of the application.
+        See FileManager.default.urls(for: .documentDirecotyr, in: .userDomainMask) line.
      */
     func uploadFile(fileKey: String) {
-        print("FileKey:", fileKey)
-        print("Files should be in here:", FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         let filename = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             .appendingPathComponent(fileKey)
-        
         Amplify.Storage.uploadFile(
             key: fileKey,
             local: filename,
@@ -71,9 +63,9 @@ class DataManager {
             }, resultListener: { event in
                 switch event {
                 case let .success(data):
-                    print("Completed: \(data)")
+                    print("Completed Upload: \(data)")
                 case let .failure(storageError):
-                    print("Error: UploadFile")
+                    print("Error: Upload")
                     print("Failed: \(storageError.errorDescription). \(storageError.recoverySuggestion)")
                 }
             }
@@ -96,18 +88,43 @@ class DataManager {
                             case .failure(let storageError):
                                 print("Failed: \(storageError.errorDescription). \(storageError.recoverySuggestion)")
                             }
-                        })
+            })
     }
-    // -> URL
+    
+    /*
+     Get the S3 URL of the fileKey if it exists, or the error image if it doesn't exist.
+     */
+    func getURL(fileKey: String, completionHandler:@escaping(URL) -> ()) {
+        self.getS3URL(fileKey: fileKey) { url in
+            // convert the url to string, or if error send the error image.
+            if url.absoluteString != "" {
+                completionHandler(url)
+            }
+        }
+    }
+    
     func getS3URL(fileKey: String, completionHandler:@escaping(URL) -> ()) {
         Amplify.Storage.getURL(key: fileKey) { event in
             switch event {
             case let .success(url):
-                print("S3URL: Completed: \(url)")
                 completionHandler(url)
             case let .failure(storageError):
                 print("S3URL: Failed: \(storageError.errorDescription). \(storageError.recoverySuggestion)")
             }
         }
     }
+    
+    func clearLocalData() {
+        Amplify.DataStore.clear { result in
+            switch result {
+            case .success:
+                print("DataStore cleared")
+            case .failure(let error):
+                print("Error clearing DataStore: \(error)")
+            }
+        }
+    }
+    
+    
+    
 }

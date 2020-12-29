@@ -2,21 +2,32 @@ import Amplify
 import Foundation
 
 public struct Post: Model {
-  public let id: String
-  public var postOwner: String
-  public var caption: String
-  public var numberOfLikes: Int
-  public var videoUrl: String
-
-  public init(id: String = UUID().uuidString,
-      postOwner: String,
-      caption: String,
-      numberOfLikes: Int,
-      videoUrl: String) {
-      self.id = id
-      self.postOwner = postOwner
-      self.caption = caption
-      self.numberOfLikes = numberOfLikes
-      self.videoUrl = videoUrl // recommend to change this to videoKey. The videoURL is acquired from S3 using the key.
-  }
+    public let id: String
+    public var postOwner: String
+    public var caption: String
+    public var numberOfLikes: Int
+    public var videoUrl: String
+    
+    public init(id: String = UUID().uuidString,
+                postOwner: String,
+                caption: String,
+                numberOfLikes: Int) {
+        self.id = id
+        self.postOwner = postOwner
+        self.caption = caption
+        self.numberOfLikes = numberOfLikes
+        self.videoUrl = "\(postOwner.hash).\(id).toggle.mov"
+    }
+    
+    public init(id: String = UUID().uuidString,
+                postOwner: String,
+                caption: String,
+                numberOfLikes: Int,
+                videoUrl: String) {
+        self.id = id
+        self.postOwner = postOwner
+        self.caption = caption
+        self.numberOfLikes = numberOfLikes
+        self.videoUrl = videoUrl
+    }
 }

@@ -6,10 +6,17 @@
 //
 
 import SwiftUI
+import Amplify
 
 struct SearchView: View {
+    
+    // I believe here, you could pass a state variable to the model init to generate a
+    // different search view.
+    @ObservedObject private var searchViewModel = SearchViewModel(query: "James")
+    
     var body: some View {
-        Text("search coming soon")
+        Text("Search Coming Soon")
+        let _ = print("Search: \(searchViewModel.posts)")
     }
 }
 
